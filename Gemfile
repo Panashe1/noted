@@ -24,6 +24,7 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'rspotify', '~> 2.11', '>= 2.11.1'
 gem "omniauth-rails_csrf_protection"
 gem 'rest-client', '~> 2.0.2'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
