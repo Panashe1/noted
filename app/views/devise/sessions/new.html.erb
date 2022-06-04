@@ -2,9 +2,9 @@
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
-        <%= image_tag 'note.png', width: '80%', height: 'auto', alt: 'Logo', class: "ms-2 d-inline-block align-top" %>
+        <%= image_tag 'note.png', width: '60%', height: 'auto', alt: 'music note', class: "ms-2 d-inline-block align-top" %>
       </div>
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 border-start border-dark">
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="divider d-flex align-items-center my-4">
           </div>
@@ -15,7 +15,6 @@
                 autofocus: true,
                 placeholder: 'Please enter a email',
                 input_html: { autocomplete: "email" } %>
-            <label class="form-label" for="form3Example3">Email address</label>
           </div>
           <!-- Password input -->
           <div class="form-outline mb-3">
