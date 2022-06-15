@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @search = RSpotify::Artist.search('Arctic Monkeys')
+    @search = RSpotify::Artist.search('Greenday')
   end
 end

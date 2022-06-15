@@ -1,4 +1,9 @@
 <%= render 'partials/hero_banner' %>
 <%= render 'partials/heading_component', {title: "Popular Reviews"} %>
+<div class="ui link cards">
+  <% @search.each do |result| %>
+    <div class="card"><%= render 'partials/cards', {results: result} %></div>
+  <% end %>
+</div>
 <%= render 'partials/heading_component', {title: "Friend Reviews"} %>
 <%= render 'partials/heading_component', {title: "Artists Reviews"} %>
