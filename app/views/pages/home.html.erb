@@ -1,9 +1,50 @@
 <%= render 'partials/hero_banner' %>
 <%= render 'partials/heading_component', {title: "Popular Reviews"} %>
+<!-- Popular Reviews -->
 <div class="ui link cards">
-  <% @search.each do |result| %>
+  <% @popular.each do |result| %>
     <div class="card"><%= render 'partials/cards', {results: result} %></div>
   <% end %>
 </div>
-<%= render 'partials/heading_component', {title: "Friend Reviews"} %>
-<%= render 'partials/heading_component', {title: "Artists Reviews"} %>
+<!-- Friend Reviews -->
+<%= render 'partials/heading_component', {title: "Random Picks"} %>
+<div class="ui link cards">
+  <% @friend.each do |result| %>
+    <div class="card"><%= render 'partials/cards', {results: result} %></div>
+  <% end %>
+</div>
+<!-- Artists Reviews -->
+<%= render 'partials/heading_component', {title: "Trending Artists"} %>
+<div class="ui link cards">
+  <table class="ui very basic collapsing celled table unstackable">
+    <thead>
+      <tr>
+        <th>Artisits</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @trending.tracks.each do |result| %>
+        <tr >
+          <td>
+            <h4 class="ui image header">
+              <%= cl_image_tag("Noted_copy_5_mtd5yn",
+      width: 40, height: 32, crop: :fill, class: "ui mini rounded image table-image") %>
+              <div class="content">
+                <%= result.name %>
+              </div>
+            </h4>
+          </td>
+          <td>
+            <div class="sub header"><%= result.popularity %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class='banner-trending-realtive'>
+  <%= cl_image_tag("Untitled_design_w87t44",
+      width: 800, height: 1000, crop: :fill, class: "banner-trending") %>
+</div>

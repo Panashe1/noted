@@ -6,6 +6,8 @@
 @import "components/navbar.scss";
 @import "components/homepage.scss";
 
+// GLOBAL CSS
+
 body {
   font-family: "Roboto", sans-serif;
   font-size: 18px;
@@ -21,6 +23,23 @@ hr {
   height: 10px;
 }
 
-.fire {
-  color: red;
+// SIMPLE MEDIA QUERY HOMEPAGE
+@media (max-width: 500px) {
+  .banner-trending {
+    display: none;
+  }
+
+  .relative-position {
+    display: none;
+  }
+
+  .cards {
+    align-self: center;
+    justify-content: center;
+  }
+
+  .table-image {
+    display: none;
+  }
 }
+///////////////////////////

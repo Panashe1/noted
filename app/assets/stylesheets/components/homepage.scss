@@ -1,3 +1,4 @@
+/// TOP HERO BANNER
 .clip-path-banner {
   clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
 }
@@ -39,3 +40,16 @@
 }
 
 /// CARDS
+
+// BOTTOM BANNER
+
+.banner-trending {
+  position: absolute;
+  bottom: 25%;
+  right: 0%;
+  margin: 30px;
+}
+
+.banner-trending-realtive {
+  position: relative;
+}
