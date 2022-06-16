@@ -6,6 +6,6 @@ class PagesController < ApplicationController
   end
 
   def show_search_results
-    @search_text = RSpotify::Artist.search(params[:searchText]).first
+    @artist = RSpotify::Artist.search(params[:searchText]).first
   end
 end
