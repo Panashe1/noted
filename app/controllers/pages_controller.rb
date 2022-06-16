@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @popular = RSpotify::Artist.search('Vance')
+    @popular = RSpotify::Artist.search('Greenday')
     @friend = RSpotify::Album.search('Cat')
     @trending = RSpotify::Recommendations.generate(seed_genres: ['rock', 'pop'])
   end
