@@ -13,11 +13,12 @@
   </i></h1>
 <p class="lead">Noted is a music website for music lovers to express their opinions about music, share saved music and look at user reviews, this is why they choose noted.
   Be apart of a music community and share the music they love.</p>
-<div class="input-group md-form form-sm form-2 pl-0">
-  <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
-  <div class="input-group-append">
-    <span class="input-group-text red lighten-3" id="basic-text1"><i class="fas fa-search fa-2x text-grey"
-        aria-hidden="true"></i></span>
+<%= form_tag search_path, method: :get do %>
+  <div class="input-group mb-3">
+    <%= text_field_tag :searchText, params[:searchText], class: "form-control", placeholder: "Search"%>
+    <%= submit_tag "Search", class: "btn btn-outline-primary" %>
   </div>
+<% end %>
+</div>
 </div>
 </div>
