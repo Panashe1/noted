@@ -3,7 +3,6 @@
 @import "semantic-ui";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 @import "components/alert";
-@import "components/homepage.scss";
 @import "components/topButton.scss";
 
 // GLOBAL CSS
@@ -20,6 +19,21 @@ p {
 hr {
   color: black;
   height: 10px;
+}
+
+#hero-banner {
+  background-image: url(DJ.png);
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.major-1 {
+  margin: 10rem;
+}
+
+.hero-heading {
+  font-size: 8rem !important;
 }
 
 // SIMPLE MEDIA QUERY HOMEPAGE

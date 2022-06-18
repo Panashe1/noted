@@ -1,22 +1,24 @@
-<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-  <div class="col-10 col-sm-8 col-lg-6 relative-position">
-    <%= cl_image_tag("Life_With_Music_a0o7ut",
-      width: 700, height: 500, crop: :fill, class: 'd-block mx-lg-auto img-fluid clip-path-banner') %>
-    <div class='icons-container'>
-      <%= icon('fa-solid', 'backward', class: 'icons-play-banner')%>
-      <%= icon('fa-solid', 'play', class: 'icons-play-banner')%>
-      <%= icon('fa-solid', 'forward', class: 'icons-play-banner')%>
+<div class="ui inverted vertical masthead center aligned segment" id='hero-banner'>
+  <div class="ui container">
+    <div class="ui large secondary inverted pointing menu">
+      <a class="toc item">
+        <i class="sidebar icon"></i>
+      </a>
+      <a class="active item">Home</a>
+      <a class="item">Profile</a>
+      <div class="right item">
+        <a class="ui inverted button">Log in / Sign up</a>
+      </div>
     </div>
   </div>
-  <div class="col-lg-6">
-    <h1 class="display-5 fw-bold lh-1 mb-3"> Made For You, By Music Lovers  </i>
-  </i></h1>
-<p class="lead">Noted is a music website for music lovers to express their opinions about music, share saved music and look at user reviews, this is why they choose noted.
-  Be apart of a music community and share the music they love.</p>
-<%= form_tag search_path, method: :get do %>
-  <div class="input-group mb-3">
-    <%= text_field_tag :searchText, params[:searchText], class: "form-control", placeholder: "Search"%>
-    <%= submit_tag "Search", class: "btn btn-outline-primary" %>
+  <div class="ui text container major-1">
+    <h1 class="ui inverted header hero-heading">
+      Made For You, By Music Lovers
+    </h1>
+    <h2>Noted is a music website for music lovers to express their opinions about music.</h2>
+    <div class="ui fluid icon input">
+      <input type="text" placeholder="Search a very wide input...">
+      <i class="search icon"></i>
+    </div>
   </div>
-<% end %>
 </div>
