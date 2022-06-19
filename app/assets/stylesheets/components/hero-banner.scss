@@ -1,0 +1,17 @@
+#hero-banner {
+  background-image: url(DJ.png);
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-heading {
+  font-size: 8rem !important;
+  margin-top: 5rem !important;
+}
+
+.double-underline {
+  text-decoration: underline;
+  text-decoration-style: double;
+  text-decoration-color: #ff8906;
+}
