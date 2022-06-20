@@ -1,48 +1,20 @@
-<section class="vh-100">
-  <div class="container-fluid h-custom">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-9 col-lg-6 col-xl-5">
-        <%= image_tag 'note.png', width: '60%', height: 'auto', alt: 'music note', class: "ms-2 d-inline-block align-top" %>
-      </div>
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 border-start border-dark">
-        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="divider d-flex align-items-center my-4">
-          </div>
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <%= f.input :email,
+<h2>Log in</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :email,
                 required: false,
                 autofocus: true,
-                placeholder: 'Please enter a email',
                 input_html: { autocomplete: "email" } %>
-          </div>
-          <!-- Password input -->
-          <div class="form-outline mb-3">
-            <%= f.input :password,
+    <%= f.input :password,
                 required: false,
-                placeholder: "Please enter a password",
                 input_html: { autocomplete: "current-password" } %>
-            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-          </div>
-          <div class="d-flex justify-content-between align-items-center">
-            <a href="/users/password/new" class="text-body">Forgot password?</a>
-          </div>
-          <div class="text-center text-lg-start mt-4 pt-2">
-            <%= f.button :submit, "Log in", class: 'btn btn-outline-primary btn-lg' %>
-            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/users/sign_up"
-                class="link-danger">Register</a></p>
-          </div>
-        <% end %>
-      </div>
-    </div>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
-  <div
-    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-dark">
-    <!-- Copyright -->
-    <div class="text-white mb-3 mb-md-0">
-      Copyright © 2022. All rights reserved.
-    </div>
-    <!-- Copyright -->
+
+  <div class="form-actions">
+    <%= f.button :submit, "Log in" %>
   </div>
-</section>
-<!-- <%= render "devise/shared/links" %> -->
+<% end %>
+
+<%= render "devise/shared/links" %>
