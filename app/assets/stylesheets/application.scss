@@ -1,4 +1,3 @@
-@import "bootstrap/scss/bootstrap";
 @import "font-awesome";
 @import "semantic-ui";
 @import "components/alert";
@@ -20,19 +19,6 @@ p {
 hr {
   color: black;
   height: 10px;
-}
-
-#accountBtn {
-  color: black !important;
-}
-
-.smaller-text {
-  font-size: 12px !important;
-  color: lightgray !important;
-}
-
-.segment-heading {
-  font-size: 2.5rem !important;
 }
 
 // SIMPLE MEDIA QUERY HOMEPAGE
