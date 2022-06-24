@@ -11,6 +11,10 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  config.file_watcher = ActiveSupport::FileUpdateChecker
+
+  config.reload_classes_only_on_change = false
+
   # cloudinary
   config.active_storage.service = :cloudinary
 

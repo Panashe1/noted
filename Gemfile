@@ -28,6 +28,7 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'devise'
 gem 'pundit'
 gem 'semantic-ui-sass'
+
 # ----------------------------------
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -38,6 +39,10 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
   gem 'spring'
+end
+
+group :assets do
+  gem 'uglifier'
 end
 
 group :test do
