@@ -1,13 +1,17 @@
 <%= render 'partials/hero_banner' %>
-<%#= render 'partials/segment_banner', {
-  main_title: 'Noted',
-  main_body: 'We can give your opinions superpowers to do things that they never thought possible. Let us delight you and empower your needs...give noted a try today.',
-  secondary_title: 'What we do?',
-  secondary_body: 'In simple terms, we bring the music to you, then its up to you and everyone else to share your views about particualr songs and albums',
-  image_link: "https://res.cloudinary.com/dh8a307rs/image/upload/v1655608178/music-note_zxz7nr.png",
-  inverted: ''
-  } %>
-<h1>TEST1</h1>
+<h2 class="ui center aligned icon header">
+  <i class="circular play icon"></i>
+  Trending
+</h2>
+<div class="ui four column divided grid m-5">
+  <div class="ui link cards">
+    <% @artists.each do |result| %>
+      <div class="card">
+        <%= render "partials/cards", {results: result} %>
+      </div>
+    <% end %>
+  </div>
+</div>
 <div>
   <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
 </div>
