@@ -6,37 +6,9 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
-@import "semantic-ui";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 @import "components/alert";
 @import "components/index.scss";
-@import "bootstrap/scss/bootstrap";
-
-// GLOBAL CSS
-body {
-  font-family: "Lato", sans-serif;
-  font-size: 18px;
-  background-color: #f8f5f2;
-}
-
-p {
-  color: #2a2a2a;
-  font-size: 20px;
-}
-
-hr {
-  color: black;
-  height: 10px;
-}
-
-// SIMPLE MEDIA QUERY HOMEPAGE
-@media (max-width: 500px) {
-  .cards {
-    align-self: center;
-    justify-content: center;
-  }
-}
-///////////////////////////
