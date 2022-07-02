@@ -1,0 +1,17 @@
+<%= render 'partials/hero_banner' %>
+<h2 class="ui center aligned icon header">
+  <i class="circular play icon"></i>
+  Trending
+</h2>
+<div class="ui four column divided grid m-5">
+  <div class="ui link cards">
+    <% @artists.each do |result| %>
+      <div class="card">
+        <%= render "partials/cards", {results: result} %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div>
+  <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
+</div>
