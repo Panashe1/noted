@@ -1,8 +1,8 @@
 <div class="card" style="width: 18rem;">
   <div class="card-body p-2 d-flex flex-column justify-content-between align-items-center ">
     <div class="dot mb-2"></div>
-    <%= image_tag("album", class:'album-image mb-3')  %>
-    <h5>Album Title</h5>
-    <span><i class="fa-solid fa-music"></i> 4.5</span>
+    <%= image_tag(data.images[0]['url'] || 'album', class:'album-image mb-3')  %>
+    <h5><%= data.name %></h5>
+    <span><i class="fa-solid fa-music"></i><%= data.popularity %></span>
   </div>
 </div>

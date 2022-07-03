@@ -1,8 +1,11 @@
-<%= render partial: 'partials/card' %>
-<%= render partial: 'partials/review-box' %>
-<%= render partial: 'partials/song-squares' %>
-<%= render partial: 'partials/card-grid'%>
-<%= render partial: 'partials/recent-reviews-grid'%>
+<!--EXAMPLE OBJECT OF PATTERN TO FOLLOW WHEN LOOPING AND STORING CARDS -->
+<div class='row'>
+  <% @artists.each do |artist| %>
+    <div class='col'>
+      <%= render 'partials/card', data: artist  %>
+    </div>
+  <% end %>
+</div>
 <!-- Scroll Button -->
 <div>
   <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
