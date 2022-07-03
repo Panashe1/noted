@@ -1,12 +1,12 @@
-.dot{
-width: 20px;
-height: 20px;
-border: 1px solid white;
-border-radius: 50%;
-background-color: white;
+.dot {
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  border-radius: 50%;
+  background-color: white;
 }
 
-.album-image{
+.album-image {
   width: 100%;
   height: auto;
   border: 2px solid white;
@@ -14,41 +14,42 @@ background-color: white;
   padding: 0%;
 }
 
-.card{
-border-radius: 25px;
-background-color: #B4C3B2;
+.card {
+  border-radius: 25px;
+  min-height: 400px;
+  max-height: 400px;
+  background-color: #b4c3b2;
 }
 
-.card{
+.card {
   transition: 0.3s;
 
-  &:hover{
+  &:hover {
     transform: scale(1.05);
     box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
   }
 }
 
-.card-top{
-  background-color: #DEDBD3;
+.card-top {
+  background-color: #dedbd3;
   border-radius: 25px 25px 0 0;
 }
 
-.card-bottom{
+.card-bottom {
   border-radius: 25px;
-  }
+}
 
-
-.light-font{
+.light-font {
   font-size: 12px;
   font-weight: 100;
 }
 
-.rounded{
+.rounded {
   border-radius: 0.5rem !important;
-  background-color: #B4C3B2;
+  background-color: #b4c3b2;
 }
 
-.square{
+.square {
   width: 100%;
   height: width;
 }

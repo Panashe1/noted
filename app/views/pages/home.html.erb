@@ -1,10 +1,12 @@
 <!--EXAMPLE OBJECT OF PATTERN TO FOLLOW WHEN LOOPING AND STORING CARDS -->
-<div class='row'>
-  <% @artists.each do |artist| %>
-    <div class='col'>
-      <%= render 'partials/card', data: artist  %>
-    </div>
-  <% end %>
+<div class='container'>
+  <div class='row'>
+    <% @artists.each do |artist| %>
+      <div class='col mb-2'>
+        <%= render 'partials/card', data: artist  %>
+      </div>
+    <% end %>
+  </div>
 </div>
 <!-- Scroll Button -->
 <div>
