@@ -1,17 +1,11 @@
-<!--EXAMPLE OBJECT OF PATTERN TO FOLLOW WHEN LOOPING AND STORING CARDS -->
-<div class='container'>
-  <div class='row'>
-    <% @artists.each do |artist| %>
-      <div class='col mb-2'>
-        <%= render 'partials/card', data: artist  %>
+<h1>HOME PAGE</h1>
+
+<%= link_to "search", "pages/search"  %>
+
+
+    <%= form_tag "pages/search", method: :get do %>
+      <div class="ui fluid icon input">
+        <%= text_field_tag :searchText, params[:searchText], placeholder: "Search an artisit now...", class: "ui big icon input"%>
+        <i class="search icon"></i>
       </div>
     <% end %>
-  </div>
-</div>
-<!-- Scroll Button -->
-<div>
-  <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
-</div>
-<% if user_signed_in? %>
-  <%= link_to "logout", destroy_user_session_path, method: :delete  %>
-<% end %>
