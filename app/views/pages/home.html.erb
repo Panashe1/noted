@@ -1,5 +1,5 @@
 <div class='container'>
-  <h2>Popular Reviews</h2>
+  <h2 class='m-3'>Popular Reviews</h2>
   <hr/>
     <div class='row'>
       <% @artists.each do |artist| %>
@@ -11,7 +11,8 @@
       </div>
       <% end %>
     </div>
-  <h2>Popular Albums</h2>
+  <h2 class='m-3'>Popular Albums</h2>
+  <hr/>
   <div class='row'>
   <% @albums.each do |album| %>
   <div class='col mb-4'>
@@ -21,19 +22,3 @@
    </div>
   <% end %>
   </div>
-<hr/>
-
-<h2>Popular Tracks</h2>
-<hr/>
-</div>
-
-
-
-
-
-    <%= form_tag "pages/search", method: :get do %>
-      <div class="ui fluid icon input">
-        <%= text_field_tag :id, params[:id], placeholder: "Search an artisit now...", class: "ui big icon input"%>
-        <i class="search icon"></i>
-      </div>
-    <% end %>

@@ -3,7 +3,7 @@ class MusicAPI
   # return a group of artists based on the search term
   def displayArtist(searchTerm)
     @artists = RSpotify::Artist.search(searchTerm)
-    return @artists
+    return @artists[0..7]
   end
 
   # return a single of artist based on the search term
@@ -15,7 +15,7 @@ class MusicAPI
   # return a group of albums based on the search term
   def displayAlbums(searchTerm)
     @albums = RSpotify::Album.search(searchTerm)
-    return @albums
+    return @albums[0..7]
   end
 
   # return a single of album based on the search term

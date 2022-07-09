@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'pages/search/:id/artist' => 'pages#searchArtist', as: 'searchArtist'
   get 'pages/search/:id/album' => 'pages#searchAlbum', as: 'searchAlbum'
-  get 'pages/search/:id/album' => 'pages#searchTrack', as: 'searchTrack'
+  get 'pages/search/:id/track' => 'pages#searchTrack', as: 'searchTrack'
   devise_for :users
 
   resources :artists, only: [:index, :show]
