@@ -3,8 +3,7 @@ require_relative '../services/api.rb'
 class PagesController < ApplicationController
 
   def home
-    # @function = displayArtist('vance')
-    @albums = displayAlbums('vance')
+    @artists = MusicAPI.new.displayArtist('vance')
   end
 
   def search
