@@ -6,12 +6,16 @@ class PagesController < ApplicationController
     @tracks = MusicAPI.new.displayTracks('bush')
   end
 
-  def search
+  def searchArtist
     # if general search term is provided, search for artist, album, and track
     if params[:search]
       # DO GENERAL SEARCH
     else
-      @results = MusicAPI.new.findArtist(params[:id])
+      @resultsArtist = MusicAPI.new.findArtist(params[:id])
     end
+  end
+
+  def searchAlbum
+    @resultsAlbum = MusicAPI.new.findAlbum(params[:id])
   end
 end

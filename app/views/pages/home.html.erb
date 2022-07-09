@@ -4,7 +4,7 @@
     <div class='row'>
       <% @artists.each do |artist| %>
       <div class='col mb-4'>
-      <a href=<%="pages/search/#{artist.id}"%>>
+      <a href=<%="pages/search/#{artist.id}/artist"%> class='link-dark text-decoration-none'>
       <%= render "partials/card", data: artist %>
       </a>
 
@@ -15,7 +15,9 @@
   <div class='row'>
   <% @albums.each do |album| %>
   <div class='col mb-4'>
+   <a href=<%="pages/search/#{album.id}/album"%> class='link-dark text-decoration-none'>
    <%= render "partials/card", data: album %>
+   </a>
    </div>
   <% end %>
   </div>
