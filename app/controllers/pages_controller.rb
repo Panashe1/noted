@@ -18,4 +18,8 @@ class PagesController < ApplicationController
   def searchAlbum
     @resultsAlbum = MusicAPI.new.findAlbum(params[:id])
   end
+
+  def searchTrack
+    @resultsTrack = MusicAPI.new.findTrack(params[:id])
+  end
 end
