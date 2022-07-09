@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#home'
-  get 'pages/search'
+  get 'pages/search/:id' => 'pages#search', as: 'search'
   devise_for :users
 
   resources :artists, only: [:index, :show]
