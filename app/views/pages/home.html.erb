@@ -3,6 +3,8 @@
 <%= link_to "search", "pages/search"  %>
 
 
+
+
     <%= form_tag "pages/search", method: :get do %>
       <div class="ui fluid icon input">
         <%= text_field_tag :searchText, params[:searchText], placeholder: "Search an artisit now...", class: "ui big icon input"%>

@@ -1,5 +1,3 @@
-require_relative '../services/api.rb'
-
 class PagesController < ApplicationController
 
   def home

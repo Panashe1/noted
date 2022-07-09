@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
   RSpotify.authenticate(ENV['spotify_client_id'], ENV['spotify_secret_key'])
 
   include Pundit::Authorization
@@ -29,5 +30,13 @@ class ApplicationController < ActionController::Base
   def skip_pundit?
     devise_controller? || params[:controller]
     # Temp turned off until project week where it will be decided by team if we would like to implement
+  end
+
+  def configure_permitted_parameters
+    # For additional fields in app/views/devise/registrations/new.html.erb
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+
+    # For additional in app/views/devise/registrations/edit.html.erb
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
   end
 end
