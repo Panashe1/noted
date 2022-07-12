@@ -6,15 +6,8 @@ Rails.application.routes.draw do
   get 'pages/search/:id/album' => 'pages#searchAlbum', as: 'searchAlbum'
   get 'pages/search/:id/track' => 'pages#searchTrack', as: 'searchTrack'
 
-
-
-  resources :artists, only: [:index, :show]
-  resources :songs do
-    resources :song_reviews, only: [:create, :index, :show, :edit, :update, :new]
-  end
+  resources :song_reviews, only: [:create, :index, :show, :edit, :update, :new]
+  resources :albums_reviews, only: [:create, :index, :show, :edit, :update, :new]
   resources :song_reviews, only: [:destroy]
-  resources :albums do
-    resources :albums_reviews, only: [:create, :index, :show, :edit, :update, :new]
-  end
   resources :album_reviews, only: [:destroy]
 end
