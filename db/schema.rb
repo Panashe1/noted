@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_09_023352) do
+ActiveRecord::Schema.define(version: 2022_07_12_113359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,25 +48,11 @@ ActiveRecord::Schema.define(version: 2022_07_09_023352) do
     t.string "title"
     t.text "description"
     t.integer "likes"
-    t.string "album_id"
+    t.string "api_id"
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_album_reviews_on_user_id"
-  end
-
-  create_table "albums", force: :cascade do |t|
-    t.float "average_rating"
-    t.string "album_id"
-    t.string "artist_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "artists", force: :cascade do |t|
-    t.string "artist_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "song_reviews", force: :cascade do |t|
@@ -74,19 +60,11 @@ ActiveRecord::Schema.define(version: 2022_07_09_023352) do
     t.string "title"
     t.text "description"
     t.integer "likes"
-    t.string "song_id"
-    t.integer "rating"
+    t.string "api_id"
+    t.float "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_song_reviews_on_user_id"
-  end
-
-  create_table "songs", force: :cascade do |t|
-    t.float "average_rating"
-    t.string "song_id"
-    t.string "album_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,49 @@
+<div class="album-banner p-3">
+
+  <div class="album-img">
+    <img src="<%= @album.images[0]['url'] %>" class="album-img ms-4 border border-dark border-4 p-2" alt="">
+  </div>
+
+  <div class="container album-details">
+
+    <div class="rating-box border border-dark border-3 me-4">
+      <div class="rating">
+        <i class="fawesome fa-solid fa-music"></i>
+      </div>
+        <p class="rating-text">4.7</p>
+    </div>
+
+    <div class="album-info">
+      <div class="album-name me-3">
+        <h1><%= @album.name %> </h1>
+        <hr>
+        <h4><%= @album.artists[0].name %></h4>
+        <p><%= @album.total_tracks%>  songs</p>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+  <div class="reviewed-songs mt-5">
+    <h2>Hot Reviews</h2>
+    <hr>
+  </div>
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-body p-2 d-flex flex-column justify-content-between align-items-center ">
+      <div class="dot mb-2"></div>
+      <%= image_tag(@album.images[0]['url'], class:'album-image mb-3')  %>
+      <h5><%= @album.name %></h5>
+      <span><i class="fa-solid fa-music"></i><%= @album.popularity %></span>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<%# <p><%= @album.release_date %> </p>

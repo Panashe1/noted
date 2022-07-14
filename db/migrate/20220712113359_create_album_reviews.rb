@@ -5,7 +5,7 @@ class CreateAlbumReviews < ActiveRecord::Migration[6.1]
       t.string :title
       t.text :description
       t.integer :likes
-      t.string :album_id
+      t.string :api_id
       t.integer :rating
 
       t.timestamps

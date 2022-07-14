@@ -5,8 +5,8 @@ class CreateSongReviews < ActiveRecord::Migration[6.1]
       t.string :title
       t.text :description
       t.integer :likes
-      t.string :song_id
-      t.integer :rating
+      t.string :api_id
+      t.float :rating
 
       t.timestamps
     end
