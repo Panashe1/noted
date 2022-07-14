@@ -1,3 +1,54 @@
 // Place all the styles related to the albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.cover-page {
+  display: flex;
+  color: blue;
+  justify-content: space-between;
+
+}
+
+.artist-container {
+  margin: 0;
+}
+
+.artist-main {
+  flex: 1;
+  background-color: #DEDBD3;
+  display: flex;
+}
+.artist-image {
+  flex: 1;
+}
+
+.divider {
+  height: 90%;
+  border-right: 3px #B4C3B2 solid;
+  margin-left: 25px;
+  margin-top: auto;
+}
+
+.artist-info {
+  margin-top: auto;
+  padding-left: 40px ;
+  padding-bottom: 80px;
+  color: #4D5759;
+
+}
+
+.artist-name {
+  font-size: 60px;
+  color: #4D5759;
+}
+
+.more-btn {
+  color: black;
+  margin-top: 30px;
+  border-radius: 10px;
+  background-color: #6A6A6A;
+  outline: none;
+  border: 0px;
+  font-size: 15px;
+  padding: 5px 20px;
+}

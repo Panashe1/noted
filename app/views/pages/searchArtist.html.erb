@@ -1,12 +1,25 @@
-<h1>SEARCH PAGE</h1>
 
+<div class='artist-container'>
+  <div class = "cover-page">
 
-<div class='container'>
-<div class='row'>
-<%= @resultsArtist.name %>
-<%= @resultsArtist.genres %>
-<img src=<%= @resultsArtist.images[0]['url'] %>>
+    <div class = "artist-main">
+      <div class = "divider"></div>
+      <div class = "artist-info">
+        <div class = "artist-name">
+          <%= @resultsArtist.name %>
+        </div>
+        <div class = "artist-genre">
+          <% str = "" %>
+          <% @resultsArtist.genres.each do |genre| %>
+            <% str += genre + ", " %>
+          <% end %>
+          <%= str %>
+        </div>
+        <button class = "more-btn">More</button>
+      </div>
+    </div>
 
+    <img class = "artist-image" src=<%= @resultsArtist.images[0]['url'] %>>
 
-</div>
+  </div>
 </div>
