@@ -1,14 +1,33 @@
-<nav class="navbar bg-light navbar-noted">
-  <div class="container-fluid">
-    <a class="navbar-brand">Noted</a>
-   <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-  <div class="search-form-control form-group d-flex">
-    <input class="form-control" type="text" name="search[query]" id="search_query" />
-     <%= image_tag "https://res.cloudinary.com/dh8a307rs/image/upload/v1657787905/default-avatar-placeholder-profile-icon-male-vector_x1rvvj.jpg", class: "avatar dropdown-toggle ms-5", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-  </div>
-<% end %>
-  </div>
-</nav>
+<header class="py-3 mb-3 border-bottom noted-bg flex-grow-1">
+    <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 4.5fr 2fr;">
+      <div class="dropdown">
+        <a href="#" class="d-flex link-dark text-decoration-none" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src='https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png' class='noted-img'>
+        </a>
+      </div>
+
+      <div class="d-flex align-items-center">
+      <div class='w-100 me-3'>
+        <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+          <form class="w-100 me-3" role="search">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+          <% end %>
+      </div>
+        <div class="flex-shrink-0 dropdown">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
 
 
     <%# <button name="button" type="submit" class="btn btn-flat">
