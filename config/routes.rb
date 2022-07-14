@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'pages/search/:id/track' => 'pages#searchTrack', as: 'searchTrack'
 
   resources :song_reviews, only: [:create, :index, :show, :edit, :update, :new]
-  resources :albums_reviews, only: [:create, :index, :show, :edit, :update, :new]
+  resources :album_reviews, only: [:create, :index, :show, :edit, :update, :new]
   resources :song_reviews, only: [:destroy]
   resources :album_reviews, only: [:destroy]
 end

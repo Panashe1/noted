@@ -1,18 +1,16 @@
 <nav class="navbar bg-light navbar-noted">
   <div class="container-fluid">
     <a class="navbar-brand">Noted</a>
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-       <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-    </form>
+   <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <div class="search-form-control form-group d-flex">
+    <input class="form-control" type="text" name="search[query]" id="search_query" />
+     <%= image_tag "https://res.cloudinary.com/dh8a307rs/image/upload/v1657787905/default-avatar-placeholder-profile-icon-male-vector_x1rvvj.jpg", class: "avatar dropdown-toggle ms-5", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+  </div>
+<% end %>
   </div>
 </nav>
 
-<%= simple_form_for :search, url: root_path, method: :get do |f| %>
-  <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-    <button name="button" type="submit" class="btn btn-flat">
+
+    <%# <button name="button" type="submit" class="btn btn-flat">
       <i class="fas fa-search"></i> Search
-    </button>
-  </div>
-<% end %>
+    </button> %>
