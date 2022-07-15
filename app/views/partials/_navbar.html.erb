@@ -1,7 +1,7 @@
 <header class="py-3 mb-3 border-bottom noted-bg flex-grow-1">
     <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 4.5fr 2fr;">
       <div class="dropdown">
-        <a href="#" class="d-flex link-dark text-decoration-none" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false">
+        <a href="/" class="d-flex link-dark text-decoration-none">
           <img src='https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png' class='noted-img'>
         </a>
       </div>
@@ -18,11 +18,15 @@
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <% if user_signed_in? %>
+            <li><a class="dropdown-item" href="users/<%=current_user.id %>">Profile</a></li>
+            <% end %>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+            <% if user_signed_in? %>
+            <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <% else %>
+            <%= link_to "LOG IN", new_user_session_path, class: "dropdown-item" %>
+            <% end %>
           </ul>
         </div>
       </div>
