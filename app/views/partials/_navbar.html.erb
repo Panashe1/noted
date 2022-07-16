@@ -1,18 +1,35 @@
-<nav class="navbar bg-light navbar-noted">
-  <div class="container-fluid">
-    <a class="navbar-brand">Noted</a>
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-       <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-    </form>
-  </div>
-</nav>
 
-<%= simple_form_for :search, url: root_path, method: :get do |f| %>
-  <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-    <button name="button" type="submit" class="btn btn-flat">
-      <i class="fas fa-search"></i> Search
-    </button>
+<header class="py-3 noted-bg flex-grow-1">
+    <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 4.5fr 2fr;">
+        <a href="/" class="d-flex link-dark text-decoration-none">
+          <img src='https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png' class='noted-img'>
+        </a>
+    <div class="d-flex align-items-center">
+      <div class='w-100 me-3 search-icon'>
+      <img src='https://res.cloudinary.com/dh8a307rs/image/upload/v1657936047/Search_Icon_jcmkgq.png' class='search-pic'>
+        <%= simple_form_for :searchText, url: results_path , method: :get do |f| %>
+          <input type="search" class="form-control search-bar" aria-label="Search" name="searchText[query]">
+        <% end %>
+      </div>
+      <div class="flex-shrink-0 dropdown">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://res.cloudinary.com/dh8a307rs/image/upload/v1657936046/Group_29_fuv0ij.png" alt="mdo" width="32" height="32" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+          <% if user_signed_in? %>
+            <li><a class="dropdown-item" href="users/<%=current_user.id %>">Profile</a></li>
+          <% end %>
+          <li><hr class="dropdown-divider"></li>
+          <% if user_signed_in? %>
+            <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <% else %>
+            <%= link_to "LOG IN", new_user_session_path, class: "dropdown-item" %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
-<% end %>
+</header>
+<%# <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i> Search
+    </button> %>

@@ -8,19 +8,19 @@ class PagesController < ApplicationController
 
   def searchArtist
     # if general search term is provided, search for artist, album, and track
-    if params[:search]
-      # DO GENERAL SEARCH
+    if params[:searchText]
+      @resultsArtist = MusicAPI.new.findArtist(params[:searchText])
     else
       @resultsArtist = MusicAPI.new.findArtist(params[:id])
       @top_tracks = @resultsArtist.top_tracks(:US).first(4)
     end
   end
 
-  def searchAlbum
-    @resultsAlbum = MusicAPI.new.findAlbum(params[:id])
-  end
-
   def searchTrack
     @resultsTrack = MusicAPI.new.findTrack(params[:id])
+  end
+
+  def resultsPage
+
   end
 end

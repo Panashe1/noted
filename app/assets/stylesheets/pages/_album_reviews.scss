@@ -1,0 +1,55 @@
+// Place all the styles related to the album_reviews controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.album-banner {
+  background: linear-gradient(
+    to right,
+    #DEDBD3 0%,
+    #DEDBD3 0%,
+    #DEDBD3 40%,
+    #e4b2b89b 100%
+  );
+  height: 450px;
+  display: flex;
+}
+
+.album-img {
+  height: 400px;
+  width: 400px;
+  margin-top: 5px;
+
+}
+
+.album-details {
+  display: flex;
+  justify-content: center;
+}
+
+.rating-box {
+  width: 100px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  margin-top: 140px;
+  border-radius: 10%;
+  font-size: 25px;
+
+}
+
+.album-info {
+  margin-top: 135px;
+}
+
+.fawesome {
+  margin-left: 4px;
+}
+
+.rating {
+  margin-right: 13px;
+  margin-top: 7px;
+}
+
+.rating-text {
+  margin-right: 13px;
+  margin-top: 7px;
+}
