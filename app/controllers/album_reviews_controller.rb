@@ -19,6 +19,6 @@ class AlbumReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:album_review).permit(:description, :rating, :api_id, :user_id, :name)
+    params.require(:album_review).permit(:description, :rating, :api_id, :user_id, :title)
   end
 end
