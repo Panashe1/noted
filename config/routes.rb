@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'pages/search/:id/artist' => 'pages#searchArtist', as: 'searchArtist'
   get 'pages/search/:id/album' => 'pages#searchAlbum', as: 'searchAlbum'
   get 'pages/search/:id/track' => 'pages#searchTrack', as: 'searchTrack'
+  get 'pages/results' => 'pages#resultsPage', as: 'results'
 
   resources :song_reviews, only: [:create, :index, :show, :edit, :update, :new]
   resources :album_reviews, only: [:create, :index, :show, :edit, :update, :new]
