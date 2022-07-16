@@ -42,6 +42,12 @@
     <div class = "reviews-title">Most Reviewed Albums</div>
     <div class = "title-divider"></div>
     <ul class = "reviewed-albums">
+      <% @top_albums.each do |album|  %>
+        <li class = reviewed-albums-item>
+          <img class = "albums-review-img"src = <%= album.images[0]['url']%> />
+          <div class = "reviewed-album-title"><%= album.name %></div>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>

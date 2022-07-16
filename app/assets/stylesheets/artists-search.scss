@@ -73,7 +73,7 @@
 .song-name {
 }
 
-.reviewed-albums,
+
 .reviewed-songs {
   display: flex;
   flex-direction: column;
@@ -108,4 +108,60 @@
 
 .reviewed-albums-container {
   margin-top: 20px;
+}
+
+.reviewed-albums {
+  display: flex;
+  padding: 3rem;
+}
+.albums-review-img {
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.reviewed-albums-item {
+  border: 2px solid black;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  height: 300px;
+  width: 250px;
+  padding: 1.5rem;
+
+  border-radius: 16px;
+  background: #B4C3B2 ;
+
+  transition: 0.2s;
+
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.reviewed-albums-item:hover {
+  transform: translateY(-1rem);
+  cursor: pointer;
+}
+
+.reviewed-albums-item:hover~.reviewed-albums-item {
+  transform: translateX((130px));
+}
+
+
+.reviewed-albums-item:not(:first-child) {
+  margin-left: -130px;
+}
+
+.reviewed-albums {
+  overflow: scroll;
+}
+
+.reviewed-album-title {
+  font-size: large;
+  font-weight: bold;
+  font-style: italic;
+  padding-top: 10px;
 }
