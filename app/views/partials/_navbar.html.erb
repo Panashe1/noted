@@ -5,14 +5,15 @@
           <img src='https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png' class='noted-img'>
         </a>
     <div class="d-flex align-items-center">
-      <div class='w-100 me-3 '>
+      <div class='w-100 me-3 search-icon'>
+      <img src='https://res.cloudinary.com/dh8a307rs/image/upload/v1657936047/Search_Icon_jcmkgq.png' class='search-pic'>
         <%= simple_form_for :searchText, url: results_path , method: :get do |f| %>
-          <input type="search" class="form-control search-bar" placeholder="🔎" aria-label="Search" name="searchText[query]">
+          <input type="search" class="form-control search-bar" aria-label="Search" name="searchText[query]">
         <% end %>
       </div>
       <div class="flex-shrink-0 dropdown">
         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          <img src="https://res.cloudinary.com/dh8a307rs/image/upload/v1657936046/Group_29_fuv0ij.png" alt="mdo" width="32" height="32" class="rounded-circle">
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
           <% if user_signed_in? %>

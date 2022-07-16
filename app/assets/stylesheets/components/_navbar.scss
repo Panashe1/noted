@@ -9,3 +9,15 @@
 .search-bar {
   border-bottom: none !important;
 }
+
+.search-icon {
+  position: relative;
+}
+
+.search-pic {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 25px;
+  width: 25px;
+}
