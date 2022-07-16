@@ -6,7 +6,7 @@
   display: flex;
   color: blue;
   justify-content: space-between;
-
+  height: 75vh;
 }
 
 .artist-container {
@@ -20,6 +20,7 @@
 }
 .artist-image {
   flex: 1;
+  background-size: cover;
 }
 
 .divider {
@@ -97,6 +98,7 @@
   justify-content: center;
   gap: 20px;
   align-items: center;
+  transition: all 0.8s ease-in-out;
 }
 
 .song-reviews {
