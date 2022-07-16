@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     <%= favicon_link_tag %>
-
     <title>Noted - A music platform that brings music lovers together to share there reviews</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -12,7 +10,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body>
-  <%= render 'partials/navbar' %>
+    <% if user_signed_in? %>
+      <%= render 'partials/navbar' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
