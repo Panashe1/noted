@@ -1,0 +1,18 @@
+.score-box {
+  display: inline-flex;
+  border: 2px solid black;
+  padding: 5px 12px;
+  border-radius: 12px;
+  gap: 3px;
+  justify-content: center;
+  align-items: center;
+}
+
+.rating-logo {
+  width: 18px;
+  height: 18px;
+}
+
+.rating-score {
+  font-weight: 400;
+}

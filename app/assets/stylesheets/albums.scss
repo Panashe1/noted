@@ -42,6 +42,7 @@
   color: #4D5759;
 }
 
+
 .more-btn {
   color: black;
   margin-top: 30px;
@@ -51,4 +52,60 @@
   border: 0px;
   font-size: 15px;
   padding: 5px 20px;
+}
+
+.artist-stats {
+  margin-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.reviews-title {
+  color: #4D5759;
+  font-size: 25px;
+}
+
+.title-divider {
+  border-top: 2px solid black;
+  padding-top: 5px;
+}
+
+.song-name {
+}
+
+.reviewed-albums,
+.reviewed-songs {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.song-item {
+  display: flex;
+  background-color: #B4C3B2;
+  border-radius: 10px;
+  padding: 8px 20px;
+  justify-content: space-between;
+}
+
+.song-info {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.song-reviews {
+  border-radius: 15px;
+  border: 0px;
+  background-color: #DEDBD3;
+  padding: 2px 15px;
+}
+
+.reviewed-albums-container {
+  margin-top: 20px;
 }

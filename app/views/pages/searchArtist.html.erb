@@ -1,7 +1,6 @@
 
 <div class='artist-container'>
   <div class = "cover-page">
-
     <div class = "artist-main">
       <div class = "divider"></div>
       <div class = "artist-info">
@@ -20,6 +19,30 @@
     </div>
 
     <img class = "artist-image" src=<%= @resultsArtist.images[0]['url'] %>>
+  </div>
+</div>
 
+<div class = "artist-stats">
+  <div class = "reviewed-songs-container">
+    <div class = "reviews-title">Most Reviewed Songs</div>
+    <div class = "title-divider"></div>
+    <ul class = "reviewed-songs">
+      <% @top_tracks.each do |track| %>
+        <li class = "song-item">
+          <div class = "song-info">
+            <div class = "rating-box"> <%= render "partials/rating-box", data: 10 %></div>
+            <div class = "song-name"><%= track.name %></div>
+          </div>
+          <button class = "song-reviews"> Reviews </button>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class = "reviewed-albums-container">
+    <div class = "reviews-title">Most Reviewed Albums</div>
+    <div class = "title-divider"></div>
+    <ul class = "reviewed-albums">
+    </ul>
   </div>
 </div>
