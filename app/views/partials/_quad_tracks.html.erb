@@ -1,0 +1,10 @@
+<div class = "quad-display-container">
+  <% data[0..5].each do |review| %>
+    <div class = "quad-item d-flex flex-column justify-content-evenly align-items-start">
+    <h5>title</h5>
+     <span>Album</span>
+        <%= render "partials/rating-box", data:review.rating %>
+        </div>
+      <% end %>
+  </div>
+</div>
