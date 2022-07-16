@@ -29,7 +29,7 @@
       <% @top_tracks.each do |track| %>
         <li class = "song-item">
           <div class = "song-info">
-            <div class = "rating-box"> <%= render "partials/rating-box", data: 10 %></div>
+            <div class = "rating-box-artist"> <%= render "partials/rating-box", data: 10 %></div>
             <div class = "song-name"><%= track.name %></div>
           </div>
           <button class = "song-reviews"> Reviews </button>
