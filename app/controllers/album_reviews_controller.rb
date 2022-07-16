@@ -9,7 +9,6 @@ class AlbumReviewsController < ApplicationController
   def create
     @album_review = AlbumReview.new(review_params)
     @album = MusicAPI.new.findAlbum(params[:id])
-    raise
     @album_review.api_id = @album.id
     @album_review.user_id = current_user.id
     if @album_review.save
