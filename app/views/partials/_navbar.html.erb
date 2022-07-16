@@ -1,38 +1,35 @@
 <header class="py-3 mb-3 border-bottom noted-bg flex-grow-1">
-    <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 4.5fr 2fr;">
-      <div class="dropdown">
-        <a href="/" class="d-flex link-dark text-decoration-none">
-          <img src='https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png' class='noted-img'>
-        </a>
-      </div>
-
-      <div class="d-flex align-items-center">
+  <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 4.5fr 2fr;">
+    <div class="dropdown">
+      <a href="/" class="d-flex link-dark text-decoration-none">
+        <img src='https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png' class='noted-img'>
+      </a>
+    </div>
+    <div class="d-flex align-items-center">
       <div class='w-100 me-3 '>
         <%= simple_form_for :searchText, url: results_path , method: :get do |f| %>
           <input type="search" class="form-control search-bar" placeholder="🔎" aria-label="Search" name="searchText[query]">
-          <% end %>
+        <% end %>
       </div>
-        <div class="flex-shrink-0 dropdown">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-            <% if user_signed_in? %>
+      <div class="flex-shrink-0 dropdown">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+          <% if user_signed_in? %>
             <li><a class="dropdown-item" href="users/<%=current_user.id %>">Profile</a></li>
-            <% end %>
-            <li><hr class="dropdown-divider"></li>
-            <% if user_signed_in? %>
+          <% end %>
+          <li><hr class="dropdown-divider"></li>
+          <% if user_signed_in? %>
             <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            <% else %>
+          <% else %>
             <%= link_to "LOG IN", new_user_session_path, class: "dropdown-item" %>
-            <% end %>
-          </ul>
-        </div>
+          <% end %>
+        </ul>
       </div>
     </div>
-  </header>
-
-
-    <%# <button name="button" type="submit" class="btn btn-flat">
+  </div>
+</header>
+<%# <button name="button" type="submit" class="btn btn-flat">
       <i class="fas fa-search"></i> Search
     </button> %>

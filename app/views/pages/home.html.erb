@@ -1,26 +1,23 @@
-
-
 <div class='container'>
   <h2 class='m-3'>Popular Reviews</h2>
   <hr/>
-    <div class='row'>
-      <% @artists.each do |artist| %>
+  <div class='row'>
+    <% @artists.each do |artist| %>
       <div class='col mb-4'>
-      <a href=<%="pages/search/#{artist.id}/artist"%> class='link-dark text-decoration-none'>
-      <%= render "partials/card", data: artist %>
-      </a>
-
+        <a href=<%="pages/search/#{artist.id}/artist"%> class='link-dark text-decoration-none'>
+          <%= render "partials/card", data: artist %>
+        </a>
       </div>
-      <% end %>
-    </div>
+    <% end %>
+  </div>
   <h2 class='m-3'>Popular Albums</h2>
   <hr/>
   <div class='row'>
-  <% @albums.each do |album| %>
-  <div class='col mb-4'>
-   <a href=<%="pages/search/#{album.id}/album"%> class='link-dark text-decoration-none'>
-   <%= render "partials/card", data: album %>
-   </a>
-   </div>
-  <% end %>
+    <% @albums.each do |album| %>
+      <div class='col mb-4'>
+        <a href=<%="pages/search/#{album.id}/album"%> class='link-dark text-decoration-none'>
+          <%= render "partials/card", data: album %>
+        </a>
+      </div>
+    <% end %>
   </div>
