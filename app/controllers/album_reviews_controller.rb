@@ -5,6 +5,7 @@ class AlbumReviewsController < ApplicationController
     @artist = MusicAPI.new.findArtist(artistid)
     @album_review = AlbumReview.new
     @reviews = AlbumReview.where("api_id LIKE ?", "%#{params[:id]}%")
+    @tracks = @album.tracks
   end
 
   def create
