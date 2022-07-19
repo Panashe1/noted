@@ -1,26 +1,25 @@
 class SongReviewsController < ApplicationController
   def show
     @song = MusicAPI.new.findTrack(params[:id])
-    # artistid = @album.artists[0].id
-    # @artist = MusicAPI.new.findArtist(artistid)
-    # @album_review = AlbumReview.new
-    # @reviews = AlbumReview.where("api_id LIKE ?", "%#{params[:id]}%")
-    # @tracks = @album.tracks
+    album_id = @song.album.id
+    @album = MusicAPI.new.findAlbum(album_id)
+    @song_review = SongReview.new
+    @reviews = SongReview.where("api_id LIKE ?", "%#{params[:id]}%")
+    @tracks = @album.tracks
   end
 
-  # def create
-  #   @album_review = AlbumReview.new(review_params)
-  #   @album = MusicAPI.new.findAlbum(params[:id])
-  #   albumid = @album_review.api_id
-  #   if @album_review.save
-  #     redirect_to album_review_path(albumid)
-  #   else
-  #     render :show
-  #   end
-  # end
+  def create
+    @song_review = SongReview.new(review_params)
+    @song = MusicAPI.new.findTrack(params[:id])
+    songid = @song_review.api_id
+    if @song_review.save
+      redirect_to song_review_path(songid)
+    else
+      render :show
+    end
+  end
 
-  # def review_params
-  #   params.require(:album_review).permit(:description, :rating, :api_id, :user_id, :title)
-  # end
-
+  def review_params
+    params.require(:song_review).permit(:description, :rating, :api_id, :user_id, :title)
+  end
 end

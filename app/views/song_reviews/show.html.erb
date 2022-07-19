@@ -1,58 +1,37 @@
 <div class="album-banner p-3">
+
   <div class="album-img">
     <img src="<%= @album.images[0]['url'] %>" class="album-img ms-4 border border-dark border-4 p-2" alt="">
   </div>
-  <div class="container album-details">
-    <div class="rating-box border border-dark border-3 me-4">
-      <div class="rating">
-        <i class="fawesome fa-solid fa-music"></i>
-      </div>
-        <p class="rating-text">4.7</p>
-    </div>
-    <div class="album-info">
-      <div class="album-details border-bottom border-dark me-3">
-        <h1><%= @album.name %> </h1>	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp; &nbsp; &nbsp;
-        <p class="songs">Album-<%= @album.total_tracks%>  Tracks- <%= @album.release_date.split("-").first %></p>
-      </div>
+
+
+<div class="container album-details">
+  <div class="song-rating-box">
+    <%= render "partials/rating-box", data:4%>
+  </div>
+  <div class="song-details">
+      <h1><%= @song.name %> </h1>
       <h4 class="artist-nm"><%= @album.artists[0].name %></h4>
-      </div>
-    </div>
   </div>
 </div>
 
-<div class="display-songs">
- <ul class = "reviewed-songs">
-      <% @tracks.each do |track| %>
-        <li class = "song-item">
-          <div class = "song-info">
-            <div class = "rating-box-artist"> <%= render "partials/rating-box", data: 4.7 %></div>
-            <div class = "song-name"><%= track.name %></div>
-          </div>
-          <button class = "song-reviews"> Reviews </button>
-        </li>
+
+  <div class="song-review border border-dark p-5" >
+      <%= simple_form_for [ @song_review ] do |f| %>
+        <%= f.input :description , as: :text, :input_html => { :rows => 3 }, placeholder: "Post a review here", label: false%>
+        <%= f.input :rating, collection: 0..5 %>
+        <%= f.input :title, as: :hidden, input_html: { value: @song.name }  %>
+        <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+        <%= f.input :api_id, as: :hidden, input_html: { value: @song.id } %>
+        <%= f.submit "Submit review", class: "btn btn-outline-dark" %>
       <% end %>
-    </ul>
+  </div>
 </div>
-
-
-<div class="album-review border border-dark p-5">
-    <%= simple_form_for [ @album_review ] do |f| %>
-      <%= f.input :description , as: :text, :input_html => { :rows => 3 }, placeholder: "Post a review here", label: false%>
-      <%= f.input :rating, collection: 0..5 %>
-      <%= f.input :title, as: :hidden, input_html: { value: @album.name }  %>
-      <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
-      <%= f.input :api_id, as: :hidden, input_html: { value: @album.id } %>
-      <%= f.submit "Submit review", class: "btn btn-outline-dark" %>
-    <% end %>
-</div>
-
-
 
 
 <div>
-  <div class="reviewed-albums mt-5 border-bottom border-dark ms-3">
-      <h2>Hot Reviews</h2>
-  </div>
+  <h2 class="border-bottom border-dark mt-5">Hot Reviews</h2>
+
   <div class="display-reviews mt-5">
     <div class="reviews p-2">
       <% @reviews.each do |review|%>
@@ -72,4 +51,4 @@
       <%  end  %>
     </div>
   </div>
-  </div>
+</div>
