@@ -5,6 +5,7 @@ class AlbumReviewsController < ApplicationController
     @artist = MusicAPI.new.findArtist(artistid)
     @album_review = AlbumReview.new
     @reviews = AlbumReview.where("api_id LIKE ?", "%#{params[:id]}%")
+    @tracks = @album.tracks
   end
 
   def create
@@ -19,6 +20,6 @@ class AlbumReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:album_review).permit(:description, :rating, :api_id, :user_id, :name)
+    params.require(:album_review).permit(:description, :rating, :api_id, :user_id, :title)
   end
 end
