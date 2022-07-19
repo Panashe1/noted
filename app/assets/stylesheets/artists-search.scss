@@ -92,6 +92,11 @@
   justify-content: space-between;
 }
 
+
+.song-item:hover {
+  cursor: pointer;
+  background-color: #b4c3b28f;
+}
 .song-info {
   display: flex;
   justify-content: center;
@@ -122,7 +127,6 @@
 }
 
 .reviewed-albums-item {
-  border: 2px solid black;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -137,12 +141,13 @@
 
   justify-content: center;
   align-items: center;
-
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 
 .reviewed-albums-item:hover {
   transform: translateY(-1rem);
+  background-color: #9dac9b;
   cursor: pointer;
 }
 
@@ -164,4 +169,20 @@
   font-weight: bold;
   font-style: italic;
   padding-top: 10px;
+}
+
+.show-more-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.fa-circle-chevron-down {
+  color: #B4C3B2;
+  font-size: 25px;
+}
+
+.fa-circle-chevron-down:hover {
+  color: #768873;
+  cursor: pointer;
 }

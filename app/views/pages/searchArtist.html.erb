@@ -11,7 +11,7 @@
           <% @resultsArtist.genres.each do |genre| %>
             <% str += genre + ", " %>
           <% end %>
-          <%= str %>
+          <%= str[0...-2] %>
         </div>
         <button class = "more-btn">More</button>
       </div>
@@ -36,6 +36,9 @@
         </li>
       <% end %>
     </ul>
+    <div class = "show-more-icon">
+      <i class="fa-solid fa-circle-chevron-down"></i>
+    </div>
   </div>
 
   <div class = "reviewed-albums-container">
