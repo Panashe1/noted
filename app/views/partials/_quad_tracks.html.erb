@@ -1,4 +1,5 @@
-<div class = "quad-display-container">
+
+<div class = "quad-display-container justify-content-end">
   <% data.last(4).reverse_each do |review| %>
       <a href=<%="/album_reviews/#{review.api_id}"%> class="quad-item d-flex flex-column justify-content-evenly align-items-start link-dark">
         <h5><%= review.title%></h5>

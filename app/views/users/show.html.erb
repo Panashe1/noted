@@ -36,15 +36,15 @@
     <div class="col-sm-12 col-md-6">
       <div>
         <div>
-          <%= @album_reviews[-1].rating %>
-          <%= @album_reviews[-1].title %>
+          <%= @album_reviews[-1]&.rating %>
+          <%= @album_reviews[-1]&.title %>
         </div>
-        <%= @album_reviews[-1].description %>
+        <%= @album_reviews[-1]&.description %>
       </div>
     </div>
 
-    <div class="col-sm-6 align-self-center">
-      <%= render "partials/quad_tracks", data:@album_reviews, class:"d-flex align-items-end justify-content-end" %>
+    <div class="col-sm-6 ">
+      <%= render "partials/quad_tracks", data:@album_reviews, class:"d-flex align-items-end" %>
     </div>
   </div>
 </div>
