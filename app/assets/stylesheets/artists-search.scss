@@ -6,7 +6,7 @@
   display: flex;
   color: blue;
   justify-content: space-between;
-  height: 75vh;
+  height: 85vh;
 }
 
 .artist-container {
@@ -196,13 +196,13 @@
   cursor: pointer;
 }
 
-a {
+.reviewed-album-title >  a{
   text-decoration: none;
   color: #4D5759;
   transition: none;
 }
 
-a:hover {
+.reviewed-album-title  > a:hover {
   color:white;
   background-color: transparent;
   border: 0px;
