@@ -17,7 +17,7 @@
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
           <% if user_signed_in? %>
-            <li><a class="dropdown-item" href="users/<%=current_user.id %>">Profile</a></li>
+            <li><a class="dropdown-item" href="/users/<%=current_user.id %>">Profile</a></li>
           <% end %>
           <li><hr class="dropdown-divider"></li>
           <% if user_signed_in? %>

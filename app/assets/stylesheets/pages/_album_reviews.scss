@@ -20,6 +20,15 @@
 
 }
 
+.artist-nm {
+  margin-top: 12px;
+}
+
+.songs {
+  margin-left: 14px;
+  margin-top: 16px;
+}
+
 .album-details {
   display: flex;
   justify-content: center;
@@ -33,15 +42,6 @@
   margin-top: 140px;
   border-radius: 10%;
   font-size: 25px;
-
-}
-
-.album-info {
-  margin-top: 135px;
-}
-
-.fawesome {
-  margin-left: 4px;
 }
 
 .rating {
@@ -52,4 +52,60 @@
 .rating-text {
   margin-right: 13px;
   margin-top: 7px;
+}
+
+.fawesome {
+  margin-left: 4px;
+}
+
+.album-info {
+  margin-top: 135px;
+}
+
+.album-review {
+  width: 98%;
+  background-color: #B4C3B2;
+  margin-top: 20px;
+  margin-left: 1%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#album_review_description {
+  width: 104.5%;
+  height: 163px;
+  margin-left: -40px;
+  border-radius: 10px;
+  margin-top: -41px;
+}
+
+#album_review_rating {
+  width: 20%;
+}
+
+.display-album-reviews {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 66px;
+}
+
+.album-rating {
+  margin-right: 25px;
+  margin-top: -26px;
+}
+
+
+.reviews {
+  background-color:  #DEDBD3 ;
+}
+
+.review-user-image {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.display-songs {
+  width: 98%;
+  margin-left: 1%;
 }

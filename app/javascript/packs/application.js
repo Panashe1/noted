@@ -13,3 +13,4 @@ import "bootstrap";
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
+ScrollReveal().reveal(".reveal", { delay: 500, duration: 1000 });
