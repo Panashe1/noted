@@ -1,0 +1,49 @@
+.song-banner {
+  background: linear-gradient(
+    to right,
+    #e4b2b89b 0%,
+    #e4b2b89b 0%,
+    #e4b2b89b 40%,
+    #DEDBD3 100%
+  );
+  height: 450px;
+  display: flex;
+}
+.song-rating-box {
+  margin-right: -30px;
+  margin-top: 5px;
+}
+
+.song-container {
+  margin-top: 140px;
+  margin-left: -200px;
+}
+
+.song-review {
+  border: 1mm ridge #e4b2b89b;
+  width: 525px;
+  margin-right: 20px;
+}
+
+#song_review_description {
+  width: 128.5%;
+  height: 242px;
+  margin-left: -40px;
+  border-radius: 10px;
+  margin-top: -41px;
+}
+
+#song_review_rating {
+  width: 128.5%;
+  margin-left: -38px;
+}
+
+
+.song-btn {
+  width: 128.5%;
+}
+
+.rating-text {
+  margin-left: -32px;
+  width: 125%;
+}

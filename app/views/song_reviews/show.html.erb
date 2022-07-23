@@ -1,36 +1,40 @@
-<div class="album-banner p-3">
+<div class="song-banner p-3">
 
   <div class="album-img">
     <img src="<%= @album.images[0]['url'] %>" class="album-img ms-4 border border-dark border-4 p-2" alt="">
   </div>
 
 
-<div class="container album-details">
+<div class="container song-container album-details">
   <div class="song-rating-box">
     <%= render "partials/rating-box", data:4%>
   </div>
   <div class="song-details">
-      <h1><%= @song.name %> </h1>
+    <div class="song-name">
+        <h1><%= @song.name%> </h1><hr>
+    </div>
       <h4 class="artist-nm"><%= @album.artists[0].name %></h4>
   </div>
 </div>
 
 
-  <div class="song-review border border-dark p-5" >
+  <div class="song-review p-5" >
       <%= simple_form_for [ @song_review ] do |f| %>
-        <%= f.input :description , as: :text, :input_html => { :rows => 3 }, placeholder: "Post a review here", label: false%>
-        <%= f.input :rating, collection: 0..5 %>
+        <%= f.input :description , as: :text, :input_html => { :rows => 3 }, placeholder: "Post a review here!", label: false%>
+        <p class="rating-text border-bottom border-dark">Pick Your Rating!</p>
+        <%= f.input :rating, collection: 0..5, label: false %>
         <%= f.input :title, as: :hidden, input_html: { value: @song.name }  %>
         <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
         <%= f.input :api_id, as: :hidden, input_html: { value: @song.id } %>
-        <%= f.submit "Submit review", class: "btn btn-outline-dark" %>
+        <%= f.submit "Submit review", class: "btn-main px-5 rounded review-submit song-btn"%>
       <% end %>
   </div>
+
 </div>
 
 
 <div>
-  <h2 class="border-bottom border-dark mt-5">Hot Reviews</h2>
+  <h2 class="ms-3 mt-3">Hot Reviews</h2><hr>
 
   <div class="display-reviews mt-5">
     <div class="reviews p-2">
