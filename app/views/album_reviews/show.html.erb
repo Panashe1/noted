@@ -2,8 +2,9 @@
   <div class="album-img">
     <img src="<%= @album.images[0]['url'] %>" class="album-img ms-4 border border-dark border-4 p-2" alt="">
   </div>
+
   <div class="container album-details">
-    <div class="rating-box border border-dark border-3 me-4">
+    <div class="rating-box border border-dark border-3 me-4 d-flex">
       <div class="rating">
         <i class="fawesome fa-solid fa-music"></i>
       </div>
@@ -11,17 +12,18 @@
     </div>
     <div class="album-info">
       <div class="album-details border-bottom border-dark me-3">
-
-          <h1 class='me-5'><%= @album.name %> </h1>
+          <h1 class='album-name'><%= @album.name %> </h1>
           <p class="songs">Album-<%= @album.total_tracks%>  Tracks- <%= @album.release_date.split("-").first %></p>
-
       </div>
       <h4 class="artist-nm"><%= @album.artists[0].name %></h4>
+      </div>
     </div>
   </div>
 </div>
-</div>
-<div class="display-songs">
+
+
+<div class="display-songs mt-3">
+<h2>Tracks</h2><hr>
  <ul class = "reviewed-songs">
       <% @tracks.each do |track| %>
         <li class = "song-item">
@@ -29,26 +31,27 @@
             <div class = "rating-box-artist"> <%= render "partials/rating-box", data: 4.7 %></div>
             <div class = "song-name"><%= track.name %></div>
           </div>
-          <button class = "song-reviews"> Reviews </button>
+          <%= link_to "Reviews", song_review_path(track.id), class: "song-reviews" %>
         </li>
       <% end %>
     </ul>
 </div>
-<div class="album-review border border-dark p-5">
 
+<h2 class="ms-3 mt-3">Leave A Review</h2><hr>
+<div class="album-review border border-dark p-5">
     <%= simple_form_for [ @album_review ] do |f| %>
-      <%= f.input :description , as: :text, :input_html => { :rows => 3 }, placeholder: "Post a review here", label: false%>
-      <%= f.input :rating, collection: 0..5 %>
+      <%= f.input :description , as: :text, :input_html => { :rows => 3 }, placeholder: "Post Your review here!", label: false%>
+      <p class="text-rating border-bottom border-dark ">Pick Your Rating!</p>
+      <%= f.input :rating, collection: 0..5, label: false %>
       <%= f.input :title, as: :hidden, input_html: { value: @album.name }  %>
       <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
       <%= f.input :api_id, as: :hidden, input_html: { value: @album.id } %>
-      <%= f.submit "Submit review", class: "btn btn-outline-dark" %>
+      <%= f.submit "Submit review", class: "btn-main px-5 rounded review-submit" %>
     <% end %>
 </div>
-<div>
-  <div class="reviewed-albums mt-5 border-bottom border-dark ms-3">
-    <h2>Hot Reviews</h2>
-  </div>
+
+<div class="mt-3" >
+   <h2 class="ms-3">Hot Reviews</h2><hr>
   <div class="display-reviews mt-5">
     <div class="reviews p-2">
       <% @reviews.each do |review|%>
@@ -65,8 +68,7 @@
           </div>
         </div>
         <hr>
-      <%  end  %>
+      <% end %>
     </div>
   </div>
-  </div>
-
+</div>

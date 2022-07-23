@@ -20,6 +20,10 @@
 
 }
 
+.album-name {
+  margin-right: 200px;
+}
+
 .artist-nm {
   margin-top: 12px;
 }
@@ -79,10 +83,6 @@
   margin-top: -41px;
 }
 
-#album_review_rating {
-  width: 20%;
-}
-
 .display-album-reviews {
   display: flex;
   justify-content: space-between;
@@ -108,4 +108,22 @@
 .display-songs {
   width: 98%;
   margin-left: 1%;
+}
+
+.review-submit {
+  margin-left: -39px;
+  width: 104.5%;
+}
+
+#album_review_rating {
+  margin-left: -39px;
+  width: 104.5%;
+}
+
+.rating-value {
+  margin-right: 10px;
+}
+
+.text-rating {
+  margin-left: -30px;
 }
