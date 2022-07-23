@@ -107,11 +107,14 @@
 }
 
 .song-reviews {
-  display: inline-flex;
+  display: flex;
   border-radius: 15px;
   border: 0px;
   background-color: #DEDBD3;
   padding: 2px 15px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .reviewed-albums-container {
@@ -191,4 +194,21 @@
 .fa-circle-chevron-down:hover {
   color: #768873;
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #4D5759;
+  transition: none;
+}
+
+a:hover {
+  color:white;
+  background-color: transparent;
+  border: 0px;
+}
+
+.song-reviews:hover {
+  background-color: #b4c3b2;
+
 }
