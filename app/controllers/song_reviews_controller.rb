@@ -19,6 +19,13 @@ class SongReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @song_review = SongReview.find(params[:id])
+    @song_review.destroy
+    songid = @song_review.api_id
+    redirect_to song_review_path(songid)
+  end
+
   def review_params
     params.require(:song_review).permit(:description, :rating, :api_id, :user_id, :title)
   end
