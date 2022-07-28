@@ -6,6 +6,7 @@ class AlbumReviewsController < ApplicationController
     @album_review = AlbumReview.new
     @reviews = AlbumReview.where("api_id LIKE ?", "%#{params[:id]}%")
     @tracks = @album.tracks
+    @finalsum = rating_score
   end
 
   def create
@@ -17,6 +18,14 @@ class AlbumReviewsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def rating_score
+    sum = 0
+    @reviews.each do |review|
+      sum += review.rating
+    end
+    @reviews.count.zero? ? '0.0' : (sum / @reviews.count.to_f)
   end
 
   def review_params
