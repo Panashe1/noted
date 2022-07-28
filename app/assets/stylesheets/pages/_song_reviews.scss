@@ -37,14 +37,21 @@
 #song_review_rating {
   width: 128.5%;
   margin-left: -38px;
+  border-radius: 10px;
 }
 
 
 .song-btn {
   width: 128.5%;
+  height: 38px;
 }
+
 
 .rating-text {
   margin-left: -32px;
   width: 125%;
+}
+
+.display-song-reviews {
+  width: 80%;
 }
