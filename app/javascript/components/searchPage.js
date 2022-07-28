@@ -15,27 +15,36 @@ function toggleSearchFilter() {
 
 const createFilterBtnEL = () => {
   artistBtn.addEventListener('click', (e) => {
-    artistList.style = "display: grid";
-    albumList.style = "display: none";
-    trackList.style = "display: none";
+    if (artistList !== null) {
+      artistList.style = "display: grid";
+      albumList.style = "display: none";
+      trackList.style = "display: none";
+    }
+
   });
 
   albumsBtn.addEventListener('click', (e) => {
+    if (artistList !== null) {
     albumList.style = "display: grid";
     artistList.style = "display: none";
     trackList.style = "display: none";
+    }
   });
 
   tracksBtn.addEventListener('click', (e) => {
+    if (artistList !== null) {
     trackList.style = "display: grid";
     artistList.style = "display: none";
     albumList.style = "display: none";
+    }
   });
 };
 
 const initializeFilter = () => {
+  if (artistList !== null) {
   albumList.style = "display: none";
   trackList.style = "display: none";
+  }
 }
 
 export default toggleSearchFilter;

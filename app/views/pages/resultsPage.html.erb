@@ -24,6 +24,8 @@
           <div class = "results--card">
           <% unless artist.images.empty? %>
             <%= image_tag(artist.images[0]['url'], class: "card--img")%>
+            <% else %>
+            <%= image_tag("https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png", class: "card--img")%>
             <% end %>
             <div class = "card--name"><%= artist.name %></div>
           </div>
@@ -38,7 +40,9 @@
         <li class = "search-results--item">
           <div class = "results--card">
           <% unless album.images.empty? %>
-            <%= image_tag(album&.images[0]['url'], class: "card--img")%>
+            <%= image_tag(album.images[0]['url'], class: "card--img")%>
+            <% else %>
+            <%= image_tag("https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png", class: "card--img")%>
             <% end %>
             <div class = "card--name"><%= album.name %></div>
           </div>
@@ -54,6 +58,8 @@
           <div class = "results--card">
           <% unless track.album.images.empty? %>
             <%= image_tag(track.album.images[0]['url'], class: "card--img")%>
+            <% else %>
+            <%= image_tag("https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png", class: "card--img")%>
             <% end %>
             <div class = "card--name"><%= track.name %></div>
           </div>

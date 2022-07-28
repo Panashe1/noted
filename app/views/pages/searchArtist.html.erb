@@ -47,9 +47,10 @@
     <ul class = "reviewed-albums">
       <% @top_albums.each do |album|  %>
         <li class = reviewed-albums-item>
-          <img class = "albums-review-img"src = <%= album.images[0]['url']%> />
-
-          <div class = "reviewed-album-title"><%= link_to album.name, album_review_path(album.id)%></div>
+            <a href=<%="/album_reviews/#{album.id}"%>>
+            <img class = "albums-review-img"src = <%= album.images[0]['url']%> />
+            <div class = "reviewed-album-title"><%= link_to album.name, album_review_path(album.id)%></div>
+          </a>
         </li>
       <% end %>
     </ul>

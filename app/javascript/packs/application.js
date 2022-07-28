@@ -19,4 +19,7 @@ ScrollReveal().reveal(".reveal", {
   duration: 500,
 });
 
-toggleSearchFilter();
+
+document.addEventListener("turbolinks:load", () => {
+  toggleSearchFilter();
+});
