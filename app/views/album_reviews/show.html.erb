@@ -4,7 +4,7 @@
   </div>
   <div class="container album-details">
     <div class="album-box">
-     <%= render "partials/rating-box", data:@finalsum%>
+     <%= render "partials/rating-box", data:@finalsum.round(1)%>
     </div>
     <div class="album-info">
       <div class="album-details border-bottom border-dark me-3">
