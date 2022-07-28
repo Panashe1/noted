@@ -212,3 +212,98 @@
   background-color: #b4c3b2;
 
 }
+
+
+.search-results--container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-results--list {
+  padding: 0px;
+  margin: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
+  grid-auto-rows: 300px;
+  gap: 20px;
+  width: 100%;
+}
+
+.card--img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.search-results--list > a {
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.search-results--item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.results--card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card--name {
+  text-align: center;
+}
+
+.toggle--container {
+  border-radius: 5px;
+  padding: 5px 5px !important;
+  background-color: #DEDBD3 !important;
+}
+
+.album--btn,
+.artist--btn {
+  padding: 0 !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  border: 0 !important;
+  font-weight: 400 !important;
+  border-radius: 5px !important;
+  font-size: large !important;
+  color: #6A6A6A !important;
+  flex: 1;
+}
+
+
+.album--btn:hover,
+.artist--btn:hover {
+  background-color: transparent !important;
+  color: black !important;
+}
+
+.btn-check:checked + .btn-outline-primary {
+  background-color: #6A6A6A !important;
+  color: #DEDBD3 !important;
+}
+
+.results--toggle-con {
+  display: grid !important;
+  grid-template-columns: 150px 150px;
+}
+
+.results--divider {
+  width: 50%;
+  border: 1px solid #4D5759;
+  margin-bottom: 5px;
+}

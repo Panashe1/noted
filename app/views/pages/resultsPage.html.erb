@@ -1,12 +1,28 @@
-<div class='container'>
-  <h3 class='mb-5 mt-5'>Here are your results!</h3>
-  <div class='row'>
-    <% @results_artist.each do |artist| %>
-      <div class='col-sm-12 col-md-6 col-lg-3 mb-4 d-flex justify-content-center'>
-        <a href=<%="/pages/search/#{artist.id}/artist"%> class='link-dark text-decoration-none'>
-          <%= render "partials/card", data: artist %>
-        </a>
-      </div>
-    <% end %>
+
+<div class = "search-results--container">
+  <div class = "reviews-title">Search results</div>
+  <div class = "results--divider"></div>
+
+<div class="toggle--container mb-4 mt-2">
+    <div class="btn-group results--toggle-con">
+        <input type="radio" class="btn-check" name="options" id="radio1" autocomplete="off" checked>
+        <label class="btn btn-outline-primary artist--btn shadow-none" for="radio1"><span class = "artist--btn-tag">Artist</span></label>
+
+        <input type="radio" class="btn-check" name="options" id="radio2" autocomplete="off">
+        <label class="btn btn-outline-primary album--btn shadow-none" for="radio2"><span class = "albums--btn-tag">Albums<span></label>
+
+    </div>
   </div>
+  <ul class = "search-results--list search--artist">
+    <% @results_artist.each do |artist|  %>
+      <a href=<%="/pages/search/#{artist.id}/artist"%>>
+        <li class = "search-results--item">
+          <div class = "results--card">
+            <%= image_tag(artist.images[0]['url'], class: "card--img")%>
+            <div class = "card--name"><%= artist.name %></div>
+          </div>
+        </li>
+      </a>
+    <% end  %>
+      </ul>
 </div>
