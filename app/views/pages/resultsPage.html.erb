@@ -34,7 +34,7 @@
 
   <ul class = "search-results--list search--albums">
     <% @results_more_albums.each do |album|  %>
-      <a href=<%="/pages/search/#{album.id}/artist"%>>
+      <a href=<%="/album_reviews/#{album.id}"%>>
         <li class = "search-results--item">
           <div class = "results--card">
           <% unless album.images.empty? %>
@@ -49,7 +49,7 @@
 
   <ul class = "search-results--list search--tracks">
     <% @results_more_tracks.each do |track|  %>
-      <a href=<%="/pages/search/#{track.id}/artist"%>>
+      <a href=<%="/song_reviews/#{track.id}"%>>
         <li class = "search-results--item">
           <div class = "results--card">
           <% unless track.album.images.empty? %>
