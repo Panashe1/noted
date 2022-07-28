@@ -37,8 +37,6 @@ class AlbumReviewsController < ApplicationController
     redirect_to album_review_path(albumid)
   end
 
-  def edit
-    @album_review = AlbumReview.find(params[:id])
   end
 
   def review_params
