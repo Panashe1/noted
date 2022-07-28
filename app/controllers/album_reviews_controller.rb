@@ -23,9 +23,11 @@ class AlbumReviewsController < ApplicationController
   def rating_score
     sum = 0
     @reviews.each do |review|
-      sum += review.rating
+      if review.rating
+    sum += review&.rating
+      end
     end
-    @reviews.count.zero? ? '0.0' : (sum / @reviews.count.to_f)
+    @reviews&.count&.zero? ? '0.0' : (sum / @reviews.count.to_f)
   end
 
   def review_params
