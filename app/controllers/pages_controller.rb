@@ -26,5 +26,9 @@ class PagesController < ApplicationController
   def resultsPage
     @results_artist = MusicAPI.new.displayArtist(params[:searchText]['query']);
     @results_album = MusicAPI.new.displayAlbums(params[:searchText]['query']);
+
+    @results_more_artists = MusicAPI.new.display_more_artists(params[:searchText]['query']);
+    @results_more_albums = MusicAPI.new.display_more_albums(params[:searchText]['query']);
+    @results_more_tracks = MusicAPI.new.display_more_tracks(params[:searchText]['query']);
   end
 end

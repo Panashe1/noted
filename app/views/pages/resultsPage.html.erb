@@ -11,18 +11,54 @@
         <input type="radio" class="btn-check" name="options" id="radio2" autocomplete="off">
         <label class="btn btn-outline-primary album--btn shadow-none" for="radio2"><span class = "albums--btn-tag">Albums<span></label>
 
+        <input type="radio" class="btn-check" name="options" id="radio3" autocomplete="off">
+        <label class="btn btn-outline-primary album--btn shadow-none" for="radio3"><span class = "albums--btn-tag">Songs<span></label>
     </div>
   </div>
+
+
   <ul class = "search-results--list search--artist">
-    <% @results_artist.each do |artist|  %>
+    <% @results_more_artists.each do |artist|  %>
       <a href=<%="/pages/search/#{artist.id}/artist"%>>
         <li class = "search-results--item">
           <div class = "results--card">
+          <% unless artist.images.empty? %>
             <%= image_tag(artist.images[0]['url'], class: "card--img")%>
+            <% end %>
             <div class = "card--name"><%= artist.name %></div>
           </div>
         </li>
       </a>
     <% end  %>
-      </ul>
+  </ul>
+
+  <ul class = "search-results--list search--albums">
+    <% @results_more_albums.each do |album|  %>
+      <a href=<%="/pages/search/#{album.id}/artist"%>>
+        <li class = "search-results--item">
+          <div class = "results--card">
+          <% unless album.images.empty? %>
+            <%= image_tag(album&.images[0]['url'], class: "card--img")%>
+            <% end %>
+            <div class = "card--name"><%= album.name %></div>
+          </div>
+        </li>
+      </a>
+    <% end  %>
+  </ul>
+
+  <ul class = "search-results--list search--tracks">
+    <% @results_more_tracks.each do |track|  %>
+      <a href=<%="/pages/search/#{track.id}/artist"%>>
+        <li class = "search-results--item">
+          <div class = "results--card">
+          <% unless track.album.images.empty? %>
+            <%= image_tag(track.album.images[0]['url'], class: "card--img")%>
+            <% end %>
+            <div class = "card--name"><%= track.name %></div>
+          </div>
+        </li>
+      </a>
+    <% end  %>
+  </ul>
 </div>

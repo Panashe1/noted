@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 import "components/homepage";
 import "bootstrap";
+import toggleSearchFilter from "components/searchPage";
 
 Rails.start();
 Turbolinks.start();
@@ -17,3 +18,5 @@ ScrollReveal().reveal(".reveal", {
   delay: 500,
   duration: 500,
 });
+
+toggleSearchFilter();
