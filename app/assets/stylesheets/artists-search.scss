@@ -228,12 +228,10 @@ $card-delay: 0.12s;
   from {
     opacity: 0;
     transform: scale(0.3);
-    filter: blur(5px);
   }
   to {
     opacity: 1;
     transform: scale(1);
-    filter: blur(0px);
 
   }
 }
@@ -243,6 +241,12 @@ $card-delay: 0.12s;
   animation-fill-mode: backwards;
 }
 
+.card--anchor:hover {
+  animation-delay: 0.2s;
+  transform: scale(1.1);
+  border: 0px;
+  opacity: 0.6;
+}
 
 
 .card--anchor:nth-child(1) {
@@ -293,7 +297,12 @@ $card-delay: 0.12s;
 .card--anchor:nth-child(16) {
   animation-delay: calc(16 * #{$card-delay});
 }
-
+.card--anchor:nth-child(17) {
+  animation-delay: calc(17 * #{$card-delay});
+}
+.card--anchor:nth-child(18) {
+  animation-delay: calc(18 * #{$card-delay});
+}
 
 .search-results--list {
   padding: 0px;
@@ -327,6 +336,7 @@ $card-delay: 0.12s;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.2s;
 }
 
 .results--card {

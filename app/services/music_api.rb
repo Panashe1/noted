@@ -43,16 +43,16 @@ class MusicAPI
 
   def display_more_albums(searchTerm)
     @albums = RSpotify::Album.search(searchTerm)
-    return @albums[0..15]
+    return @albums[0..17]
   end
 
   def display_more_artists(searchTerm)
     @artists = RSpotify::Artist.search(searchTerm)
-    return @artists[0..15]
+    return @artists[0..17]
   end
 
   def display_more_tracks(searchTerm)
     @tracks = RSpotify::Track.search(searchTerm)
-    return @tracks[0..15]
+    return @tracks[0..17]
   end
 end
