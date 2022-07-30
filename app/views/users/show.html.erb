@@ -4,9 +4,9 @@
       <div class="user-banner-left d-flex flex-column justify-content-center align-items-center">
         <%= cl_image_tag @user.photo.key, class:'profile-img mb-5' %>
         <div>
-          <% if @user.followers.include?(current_user.id.to_i) && @user.id != current_user.id.to_i %>
+          <% if @user&.followers&.include?(current_user&.id) && @user&.id != current_user&.id %>
             <%=  link_to "Unfollow", unfollow_path, method: :post %>
-          <%elsif @user.id != current_user.id.to_i%>
+          <%elsif @user&.id != current_user&.id&.to_i%>
             <%= link_to "Follow", follow_path, method: :post %>
           <% end %>
         </div>
@@ -16,17 +16,17 @@
       <div class="user-banner-right d-flex flex-column justify-content-between">
         <div class="d-flex justify-content-between align-items-start">
           <div class="fs-1">
-            <%=@user.first_name %>
-            <%= @user.last_name %>
+            <%=@user&.first_name %>
+            <%= @user&.last_name %>
           </div>
           <div class="d-flex">
             <div class="text-center">
               <h5 class="me-3">Followers</h5>
-              <h5><%= @user.followers.length %></h5>
+              <h5><%= @user&.followers.length %></h5>
             </div>
             <div class="text-center">
               <h5>Following</h5>
-              <h5><%= @user.following.length %></h5>
+              <h5><%= @user&.following.length %></h5>
             </div>
           </div>
         </div>
