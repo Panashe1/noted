@@ -2,16 +2,49 @@
   <div class="row">
     <div class="col col-sm-12 col-md-6 my-5" >
       <div class="user-banner-left d-flex flex-column justify-content-center align-items-center">
-        <img src="https://i.pravatar.cc/300" class='profile-img mb-5'>
-        <button class="btn-main py-1 px-5 rounded border-0">Edit Profile</button>
+         <%= cl_image_tag @user.photo.key, class:'profile-img mb-5' %>
+
+        <div>
+          <% if @user.followers.include?(current_user.id.to_i) && @user.id != current_user.id.to_i %>
+            <%=  link_to "Unfollow", unfollow_path, method: :post %>
+          <%elsif @user.id != current_user.id.to_i%>
+           <%= link_to "Follow", follow_path, method: :post %>
+           <% end %>
+
+</div>
+
+
+
+
       </div>
     </div>
     <div class="col col-sm-12 col-md-6 d-flex align-items-center">
       <div class="user-banner-right d-flex flex-column justify-content-between">
+      <div class="d-flex justify-content-between align-items-start">
         <div class="fs-1">
           <%=@user.first_name %>
           <%= @user.last_name %>
         </div>
+        <div class="d-flex">
+          <div class="text-center">
+          <h5 class="me-3">Followers</h5>
+          <h5><%= @user.followers.length %></h5>
+          </div>
+
+
+          <div class="text-center">
+          <h5>Following</h5>
+          <h5><%= @user.following.length %></h5>
+          </div>
+
+        </div>
+       </div>
+
+
+
+
+
+
         <hr class="solid mb-3">
         <h5 class="fs-3">About Me</h5>
         <p class="mb-3">Hi im a music lover, I enjoy listening to RNB, Hiphop, Rap, Jazz and Classical music. The weirdest band I've seen live is a Japanese Jazz-Rock band in Tokyo</p>
@@ -85,6 +118,3 @@
     </div>
   </div>
 </div>
-
-
-<%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>

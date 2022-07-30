@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
-  get 'users/:id' => 'users#show'
+  get 'users/community' => 'users#community'
+  get 'users/:id' => 'users#show', as: 'users'
+
+  post 'users/:id/follow' => 'users#follow', as: 'follow'
+  post 'users/:id/unfollow' => 'users#unfollow', as: 'unfollow'
   get 'pages/search/:id/artist' => 'pages#searchArtist', as: 'searchArtist'
   get 'pages/search/:id/album' => 'pages#searchAlbum', as: 'searchAlbum'
   get 'pages/search/:id/track' => 'pages#searchTrack', as: 'searchTrack'
