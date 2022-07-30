@@ -159,6 +159,10 @@ $card-delay: 0.12s;
   transform: translateY(-1rem);
   background-color: #9dac9b;
   cursor: pointer;
+
+  a {
+    border-radius:10px ;
+  }
 }
 
 .reviewed-albums-item:hover~.reviewed-albums-item {
@@ -324,7 +328,7 @@ $card-delay: 0.12s;
 
 .search-results--list > a {
   height: 100%;
-  background: radial-gradient(circle at center, #DEDBD3, #9d9b94);;
+  background: radial-gradient(circle at center, #DEDBD3,#DEDBD3, #aba9a0);
   display: flex;
   justify-content: center;
   align-items: center;
