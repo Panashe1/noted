@@ -25,14 +25,19 @@
 
 
 // <------------------ GENERAL FEED CONTAINER --------------------->
+$spanRow: 220px;
+$spanCol: 170px;
+
 .feed--container {
   display: grid;
   gap: 5px;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  grid-auto-rows: 200px;
+  grid-template-columns: repeat(auto-fit, minmax($spanCol, 1fr));
+  grid-auto-rows: $spanRow;
   grid-auto-flow: dense;
 
   margin: 15px 20px;
+
+
 }
 
 .feed--review-item {
@@ -43,20 +48,24 @@
 }
 .feed--review-item.default {
   background-color: yellow;
+
   grid-column: span 1;
   grid-row: span 1;
 }
 .feed--review-item.vertical{
   background-color: green;
+
   grid-row: span 2 ;
 }
 .feed--review-item.big {
   background-color: blue;
+
   grid-column:  span 2;
   grid-row: span 2;
 }
 .feed--review-item.horizontal{
   background-color: red;
+
   grid-column: span 2;
 }
 

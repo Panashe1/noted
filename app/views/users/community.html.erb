@@ -1,17 +1,29 @@
-
 <% allReviews = (@all_album_reviews + @all_song_reviews).shuffle %>
-<% sizeLayout = ["horizontal", "vertical", "big", "default"]  %>
-
+<% sizeLayout = ["horizontal", "vertical", "big", "default", "default", "default"]  %>
+<% track_type = "" %>
+<% img_url = "" %>
+<% isTrack = false %>
 <div class="feed--container">
   <%allReviews.each do |review| %>
+    <% randomIndex  = rand(1...sizeLayout.length) %>
+    <% isTrack = (review.class.name == "SongReview") %>
+    <% if (isTrack)  %>
+    <%  track = MusicAPI.new.findTrack(review.api_id)  %>
+    <%  track_type = "Song"  %>
+    <%  img_url = track.album.images[0]['url'] %>
+    <% else %>
+    <%  album = MusicAPI.new.findAlbum(review.api_id)  %>
+    <%  track_type = "Album"  %>
+    <%  img_url = album.images[0]['url'] %>
+    <% end %>
     <% username = User.find(review.user_id)%>
-    <div class="feed--review-item <%= "#{sizeLayout.sample}"%>">
+    <div class="feed--review-item <%= "#{sizeLayout[randomIndex]}"%> card--cover-img" style="background-image: url(<%=img_url%>);">
       <div class="feed--review-con">
         <div class="feed--img-con">
           <% unless username.photo.key == nil %>
-          <%= cl_image_tag username.photo.key, class: 'feed--img review-user-image border border-dark ms-3 me-2'%>
+            <%= cl_image_tag username.photo.key, class: 'feed--img review-user-image border border-dark ms-3 me-2'%>
           <% else  %>
-          <img class = "feed--img review-user-image border border-dark ms-3 me-2"/>
+            <img class = "feed--img review-user-image border border-dark ms-3 me-2"/>
           <% end %>
           <div class="feed--rating-box">
             <%= render "partials/rating-box", data:(100/20.to_f).round(1) %>
@@ -28,17 +40,18 @@
               </div>
               <span class="word-breaker"></span>
               <div class="feed-review-type">
-                <%= "type"  %>
+                <%= "#{track_type}"  %>
               </div>
             </div>
           </div>
           <div class = "feed--review-text">
             <i class="fa fas text-muted fa-quote-left feed-talking-marks" style="color:#fff;"></i>
-              <div class="review--text"><%=review.description%></div>
+            <div class="review--text"><%=review.description%></div>
             <i class="fa fas text-muted fa-quote-right feed-talking-marks" style="color:#fff;"></i>
           </div>
         </div>
       </div>
     </div>
   <% end %>
+
 </div>
