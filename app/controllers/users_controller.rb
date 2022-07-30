@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     redirect_to users_path(@user)
   end
 
+
   def unfollow
     @user = User.find(params[:id])
     userid = @user.id
@@ -28,4 +29,8 @@ class UsersController < ApplicationController
     current_user.save
     redirect_to users_path(@user)
   end
+
+
+
+
 end

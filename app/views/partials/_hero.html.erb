@@ -1,13 +1,19 @@
-<div class='row hero-background'>
-  <div class='col-1'>
-    <div class='divider-noted'></div>
-  </div>
-  <div class='col-5 flex-column d-flex sign-up-btn align-self-end mb-5'>
-    <h1 class='text-decoration-underline hero-heading'>Noted</h1>
-    <p class='fw-semibold fs-5 hero-text'>The music platform made by music lovers, for music lovers</p>
-    <a href='/users/sign_up' class="btn btn-outline-dark btn-lg align-self-start sign-up-btn-btn">Sign up</a>
-  </div>
-  <div class='col-6'>
-    <img src='https://res.cloudinary.com/dh8a307rs/image/upload/v1659155780/Steve_rl2shq.webp' class='hero-img'>
+
+<div class='container-fluid'>
+  <div class='row hero-background'>
+    <div class='col-1'>
+      <div class='divider-noted'></div>
+    </div>
+    <div class='col-5 flex-column d-flex sign-up-btn align-self-end mb-5'>
+      <h1 class='text-decoration-underline hero-heading'>Noted</h1>
+      <p class='fw-semibold fs-5 hero-text'>The music platform made by music lovers, for music lovers</p>
+      <%if user_signed_in? %>
+        <% else %>
+        <a href='/users/sign_up' class="btn btn-outline-dark btn-lg align-self-start sign-up-btn-btn">Sign up</a>
+      <% end %>
+    </div>
+    <div class='col-6'>
+      <img src='https://res.cloudinary.com/dh8a307rs/image/upload/v1659157253/Kendrick_hdtf0x.webp' class='hero-img'>
+    </div>
   </div>
 </div>

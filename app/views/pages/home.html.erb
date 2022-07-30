@@ -1,25 +1,51 @@
 <%= render "partials/hero" %>
 <div class='container'>
-  <h2 class='m-3 homepage-heading'>Popular Reviews</h2>
+  <h2 class='m-3 homepage-heading'>Popular Artists</h2>
   <hr/>
-  <div class='row'>
+  <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5">
     <% @artists.each do |artist| %>
-      <div class='col-sm-12 col-md-6 col-lg-3 mb-4 d-flex justify-content-center'>
-        <a href=<%="pages/search/#{artist.id}/artist"%> class='link-dark text-decoration-none'>
-          <%= render "partials/card", data: artist %>
-        </a>
-      </div>
+      <a href=<%="pages/search/#{artist.id}/artist"%> class='link-dark text-decoration-none'>
+        <div class="col ">
+          <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg noted-home-image" style="background-image: url('<%= artist.images[0]['url']%>');">
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+              <ul class="d-flex list-unstyled mt-auto">
+                <li class="me-auto">
+                  <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold blend-noted"><%= artist.name %></h3>
+                </li>
+                <li class="d-flex align-items-center me-3">
+                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                </li>
+                <li class="d-flex align-items-center">
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </a>
     <% end %>
   </div>
   <h2 class='m-3 homepage-heading'>Popular Albums</h2>
   <hr/>
-  <div class='row'>
+  <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5">
     <% @albums.each do |album| %>
-      <div class='col mb-4 d-flex justify-content-center'>
-        <a href=<%="/album_reviews/#{album.id}"%> class='link-dark text-decoration-none'>
-          <%= render "partials/card", data: album %>
-        </a>
-      </div>
+      <a href=<%="/album_reviews/#{album.id}"%> class='link-dark text-decoration-none'>
+        <div class="col">
+          <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg noted-home-image" style="background-image: url('<%= album.images[0]['url']%>');">
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+              <ul class="d-flex list-unstyled mt-auto">
+                <li class="me-auto">
+                  <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold blend-noted"><%= album.name %></h3>
+                </li>
+                <li class="d-flex align-items-center me-3">
+                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                </li>
+                <li class="d-flex align-items-center">
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </a>
     <% end %>
   </div>
 </div>
