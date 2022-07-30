@@ -16,7 +16,16 @@
 @import "users";
 @import "song_reviews";
 
-
 .bg-noted {
-  background-color: #DEDBD3;
+  background-color: #dedbd3;
+}
+
+.noted-home-image {
+  background-position: center center;
+  background-size: cover;
+  background-blend-mode: exclusion;
+}
+
+.blend-noted {
+  text-shadow: 1px 1px #060202;
 }
