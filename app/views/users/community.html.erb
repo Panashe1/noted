@@ -1,13 +1,18 @@
 
 <% allReviews = (@all_album_reviews + @all_song_reviews).shuffle %>
-<% sizeLayout = ["horizontal", "vertical", "big", ""]  %>
+<% sizeLayout = ["horizontal", "vertical", "big", "default"]  %>
+
 <div class="feed--container">
   <%allReviews.each do |review| %>
     <% username = User.find(review.user_id)%>
     <div class="feed--review-item <%= "#{sizeLayout.sample}"%>">
       <div class="feed--review-con">
         <div class="feed--img-con">
+          <% unless username.photo.key == nil %>
           <%= cl_image_tag username.photo.key, class: 'feed--img review-user-image border border-dark ms-3 me-2'%>
+          <% else  %>
+          <img class = "feed--img review-user-image border border-dark ms-3 me-2"/>
+          <% end %>
           <div class="feed--rating-box">
             <%= render "partials/rating-box", data:(100/20.to_f).round(1) %>
           </div>
@@ -28,7 +33,9 @@
             </div>
           </div>
           <div class = "feed--review-text">
-            <i class="fas text-muted fa-quote-left me-2"></i><%= review.description %><i class="fas text-muted fa-quote-right ms-2"></i>
+            <i class="fa fas text-muted fa-quote-left feed-talking-marks" style="color:#fff;"></i>
+              <div class="review--text"><%=review.description%></div>
+            <i class="fa fas text-muted fa-quote-right feed-talking-marks" style="color:#fff;"></i>
           </div>
         </div>
       </div>
