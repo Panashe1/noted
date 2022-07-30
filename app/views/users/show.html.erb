@@ -2,49 +2,34 @@
   <div class="row">
     <div class="col col-sm-12 col-md-6 my-5" >
       <div class="user-banner-left d-flex flex-column justify-content-center align-items-center">
-         <%= cl_image_tag @user.photo.key, class:'profile-img mb-5' %>
-
+        <%= cl_image_tag @user.photo.key, class:'profile-img mb-5' %>
         <div>
           <% if @user.followers.include?(current_user.id.to_i) && @user.id != current_user.id.to_i %>
             <%=  link_to "Unfollow", unfollow_path, method: :post %>
           <%elsif @user.id != current_user.id.to_i%>
-           <%= link_to "Follow", follow_path, method: :post %>
-           <% end %>
-
-</div>
-
-
-
-
+            <%= link_to "Follow", follow_path, method: :post %>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col col-sm-12 col-md-6 d-flex align-items-center">
       <div class="user-banner-right d-flex flex-column justify-content-between">
-      <div class="d-flex justify-content-between align-items-start">
-        <div class="fs-1">
-          <%=@user.first_name %>
-          <%= @user.last_name %>
-        </div>
-        <div class="d-flex">
-          <div class="text-center">
-          <h5 class="me-3">Followers</h5>
-          <h5><%= @user.followers.length %></h5>
+        <div class="d-flex justify-content-between align-items-start">
+          <div class="fs-1">
+            <%=@user.first_name %>
+            <%= @user.last_name %>
           </div>
-
-
-          <div class="text-center">
-          <h5>Following</h5>
-          <h5><%= @user.following.length %></h5>
+          <div class="d-flex">
+            <div class="text-center">
+              <h5 class="me-3">Followers</h5>
+              <h5><%= @user.followers.length %></h5>
+            </div>
+            <div class="text-center">
+              <h5>Following</h5>
+              <h5><%= @user.following.length %></h5>
+            </div>
           </div>
-
         </div>
-       </div>
-
-
-
-
-
-
         <hr class="solid mb-3">
         <h5 class="fs-3">About Me</h5>
         <p class="mb-3">Hi im a music lover, I enjoy listening to RNB, Hiphop, Rap, Jazz and Classical music. The weirdest band I've seen live is a Japanese Jazz-Rock band in Tokyo</p>
@@ -53,12 +38,10 @@
             <span class="fs-5">Rated Reviews</span>
             <span class="fw-bold fs-3 text-center"><%= @album_reviews.count +  @song_reviews.count %></span>
           </div>
-
           <div class="d-flex flex-column me-3">
             <span class="fs-5">Rated Albums</span>
             <span class="fw-bold fs-3 text-center"> <%= @album_reviews.count  %></span>
           </div>
-
           <div class="d-flex flex-column me-3">
             <span class="fs-5">Rated Songs</span>
             <span class="fw-bold fs-3 text-center"><%= @song_reviews.count %></span>
@@ -68,15 +51,12 @@
     </div>
   </div>
 </div>
-
 <div class="container my-5" id="recent-reviews-album">
   <div class="d-flex justify-content-between align-items-end">
     <h2 class="fs-2">Your Recent Album Reviews</h2>
     <a href="" class="btn-main rounded py-1 px-5">See More</a>
   </div>
-
   <hr class="solid mb-3">
-
   <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-8">
       <div>
@@ -87,21 +67,17 @@
         <%= @album_reviews[-1]&.description %>
       </div>
     </div>
-
     <div class="col-sm-12 col-md-6 col-lg-4">
       <%= render "partials/quad_tracks", data:@album_reviews, class:"d-flex align-items-end" %>
     </div>
   </div>
 </div>
-
 <div class="container mt-5" id="recent-reviews-song">
   <div class="d-flex justify-content-between align-items-end">
     <a href="" class="btn-main rounded py-1 px-5">See More</a>
     <h2 class="fs-2">Your Recent Song Reviews</h2>
   </div>
-
   <hr class="solid mb-3">
-
   <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-8">
       <div>
@@ -112,7 +88,6 @@
         <%= @song_reviews[-1]&.description %>
       </div>
     </div>
-
     <div class="col-sm-12 col-md-6 col-lg-4">
       <%= render "partials/quad_tracks_songs", data:@song_reviews, class:"d-flex align-items-end" %>
     </div>

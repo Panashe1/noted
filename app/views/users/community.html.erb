@@ -1,8 +1,7 @@
 <div class="container-fluid">
   <% @user.each do |user|%>
-   <a class="" href="/users/<%=user.id %>">
-    <h1><%=user.first_name%> <%=user.last_name%> <%=user.id%></h1>
-  </a>
-<% end %>
-
+    <a class="" href="/users/<%=user.id %>">
+      <h1><%=user.first_name%> <%=user.last_name%> <%=user.id%></h1>
+    </a>
+  <% end %>
 </div>
