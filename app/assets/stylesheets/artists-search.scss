@@ -243,6 +243,13 @@ $card-delay: 0.12s;
 .card--anchor {
   animation: cardDisplay 300ms ease-out;
   animation-fill-mode: backwards;
+
+}
+
+.card--cover-img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .card--anchor:hover {
@@ -328,10 +335,9 @@ $card-delay: 0.12s;
 
 .search-results--list > a {
   height: 100%;
-  background: radial-gradient(circle at center, #DEDBD3,#DEDBD3, #aba9a0);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   border-radius: 10px;
   color: black;
 }
@@ -341,18 +347,26 @@ $card-delay: 0.12s;
   justify-content: center;
   align-items: center;
   transition: all 0.2s;
+  margin-bottom: 12px;
 }
 
 .results--card {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 3px;
 }
 
 .card--name {
   text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.card--name.blend-noted {
+  text-shadow: 2px 2px black,
 }
 
 .toggle--container {
@@ -400,7 +414,7 @@ $card-delay: 0.12s;
 
 .search-results--container .score-box {
   display: inline-flex;
-  border: 1px solid black;
+  border: 2px solid white;
   padding: 1px 12px;
   border-radius: 12px;
   gap: 3px;
@@ -408,17 +422,18 @@ $card-delay: 0.12s;
   align-items: center;
   margin: 0 !important;
   font-size: 12px;
+  box-shadow: 1px 1px black;
 }
 
 .search-results--container .rating-logo {
   width: 1rem;
   height: 1rem;
+  filter: invert(1) drop-shadow(1px 1px 1px black);
 }
 
 .search-results--container .rating-score {
-  font-weight: 400;
-}
-
-.reviews-title .quote {
-  font-size: medium;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: white;
+  text-shadow: 1px 1px black;
 }

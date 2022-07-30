@@ -1,30 +1,34 @@
 <div class = "search-results--container">
   <div class = "reviews-title">
     Search Results For
-     "<%=@query.upcase%>"
-    </div>
+    "<%=@query.upcase%>"
+  </div>
   <div class = "results--divider"></div>
   <div class="toggle--container mb-4 mt-2">
     <div class="btn-group results--toggle-con">
       <input type="radio" class="btn-check" name="options" id="radio1" autocomplete="off" checked>
-      <label class="btn btn-outline-primary artist--btn shadow-none" for="radio1"><span class = "artist--btn-tag">Artist</span></label>
+      <label class="btn btn-outline-primary artist--btn shadow-none" for="radio1"><span class = "artist--btn-tag">Artist</span>
+      </label>
       <input type="radio" class="btn-check" name="options" id="radio2" autocomplete="off">
-      <label class="btn btn-outline-primary album--btn shadow-none" for="radio2"><span class = "albums--btn-tag">Albums<span></label>
+      <label class="btn btn-outline-primary album--btn shadow-none" for="radio2"><span class = "albums--btn-tag">Albums<span>
+          </label>
           <input type="radio" class="btn-check" name="options" id="radio3" autocomplete="off">
-          <label class="btn btn-outline-primary album--btn shadow-none" for="radio3"><span class = "albums--btn-tag">Songs<span></label>
+          <label class="btn btn-outline-primary album--btn shadow-none" for="radio3"><span class = "albums--btn-tag">Songs<span>
+              </label>
             </div>
           </div>
           <ul class = "search-results--list search--artist">
             <% @results_more_artists.each do |artist|  %>
-              <a href=<%="/pages/search/#{artist.id}/artist"%> class = "card--anchor">
+              <% background_img = "" %>
+              <% unless artist.images.empty? %>
+                <% background_img = artist.images[0]['url']%>
+              <% else %>
+                <% background_img = "https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png" %>
+              <% end %>
+              <a href=<%="/pages/search/#{artist.id}/artist"%> class = "card--anchor card--cover-img" style="background-image: url(<%=background_img%>);" >
                 <li class = "search-results--item">
                   <div class = "results--card">
-                    <% unless artist.images.empty? %>
-                      <%= image_tag(artist.images[0]['url'], class: "card--img")%>
-                    <% else %>
-                      <%= image_tag("https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png", class: "card--img")%>
-                    <% end %>
-                    <div class = "card--name"><%= artist.name %></div>
+                    <div class = "card--name blend-noted"><%= artist.name %></div>
                     <div class = "rating-box-artist"> <%= render "partials/rating-box", data: (artist.popularity/20.to_f).round(1) %></div>
                   </div>
                 </li>
@@ -33,15 +37,16 @@
           </ul>
           <ul class = "search-results--list search--albums">
             <% @results_more_albums.each do |album|  %>
-              <a href=<%="/album_reviews/#{album.id}"%> class = "card--anchor">
+              <% background_img = "" %>
+              <% unless album.images.empty? %>
+                <% background_img = album.images[0]['url']%>
+              <% else %>
+                <% background_img = "https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png" %>
+              <% end %>
+              <a href=<%="/album_reviews/#{album.id}"%> class = "card--anchor card--cover-img" style="background-image: url(<%=background_img%>);" >
                 <li class = "search-results--item">
                   <div class = "results--card">
-                    <% unless album.images.empty? %>
-                      <%= image_tag(album.images[0]['url'], class: "card--img")%>
-                    <% else %>
-                      <%= image_tag("https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png", class: "card--img")%>
-                    <% end %>
-                    <div class = "card--name"><%= album.name %></div>
+                    <div class = "card--name blend-noted"><%= album.name %></div>
                     <div class = "rating-box-artist"> <%= render "partials/rating-box", data: (album.popularity/20.to_f).round(1) %></div>
                   </div>
                 </li>
@@ -50,15 +55,16 @@
           </ul>
           <ul class = "search-results--list search--tracks">
             <% @results_more_tracks.each do |track|  %>
-              <a href=<%="/song_reviews/#{track.id}"%> class = "card--anchor">
+              <% background_img = "" %>
+              <% unless track.album.images.empty? %>
+                <% background_img = track.album.images[0]['url']%>
+              <% else %>
+                <% background_img = "https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png" %>
+              <% end %>
+              <a href=<%="/song_reviews/#{track.id}"%> class = "card--anchor card--cover-img" style="background-image: url(<%=background_img%>);" >
                 <li class = "search-results--item">
                   <div class = "results--card">
-                    <% unless track.album.images.empty? %>
-                      <%= image_tag(track.album.images[0]['url'], class: "card--img")%>
-                    <% else %>
-                      <%= image_tag("https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png", class: "card--img")%>
-                    <% end %>
-                    <div class = "card--name"><%= track.name %></div>
+                    <div class = "card--name blend-noted"><%= track.name %></div>
                     <div class = "rating-box-artist"> <%= render "partials/rating-box", data: (track.popularity/20.to_f).round(1) %></div>
                   </div>
                 </li>
