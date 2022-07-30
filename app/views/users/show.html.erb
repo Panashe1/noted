@@ -20,11 +20,11 @@
             <%= @user&.last_name %>
           </div>
           <div class="d-flex">
-            <div class="text-center">
+            <div type="button" data-bs-toggle="modal" data-bs-target="#followers-modal" class="text-center">
               <h5 class="me-3">Followers</h5>
               <h5><%= @user&.followers.length %></h5>
             </div>
-            <div class="text-center">
+            <div type="button" data-bs-toggle="modal" data-bs-target="#following-modal" class="text-center">
               <h5>Following</h5>
               <h5><%= @user&.following.length %></h5>
             </div>
@@ -88,6 +88,59 @@
     </div>
     <div class="col-sm-12 col-md-6 col-lg-4">
       <%= render "partials/quad_tracks_songs", data:@song_reviews, class:"d-flex align-items-end" %>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="followers-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Followers</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <% @user.followers.each do |id|%>
+        <%[User.find(id)].each do |user|%>
+        <a href="/users/<%= user.id %>" class="modal-links">
+          <div class="mb-3">
+            <%= cl_image_tag user.photo.key, class:'avatar me-2' %>
+            <%= user.username %>
+          </div>
+        </a>
+        <% end %>
+       <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-main rounded-modal" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="following-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Following</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <% @user.following.each do |id|%>
+        <%[User.find(id)].each do |user|%>
+         <a href="/users/<%= user.id %>" class="modal-links">
+          <div class="mb-3">
+            <%= cl_image_tag user.photo.key, class:'avatar me-2'%>
+            <%= user.username %>
+          </div>
+          </a>
+        <% end %>
+       <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-main rounded-modal" data-bs-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>
