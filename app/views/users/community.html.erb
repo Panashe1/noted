@@ -1,7 +1,37 @@
-<div class="container-fluid">
-  <% @user.each do |user|%>
-    <a class="" href="/users/<%=user.id %>">
-      <h1><%=user.first_name%> <%=user.last_name%> <%=user.id%></h1>
-    </a>
+
+<% allReviews = (@all_album_reviews + @all_song_reviews).shuffle %>
+<% sizeLayout = ["horizontal", "vertical", "big", ""]  %>
+<div class="feed--container">
+  <%allReviews.each do |review| %>
+    <% username = User.find(review.user_id)%>
+    <div class="feed--review-item <%= "#{sizeLayout.sample}"%>">
+      <div class="feed--review-con">
+        <div class="feed--img-con">
+          <%= cl_image_tag username.photo.key, class: 'feed--img review-user-image border border-dark ms-3 me-2'%>
+          <div class="feed--rating-box">
+            <%= render "partials/rating-box", data:(100/20.to_f).round(1) %>
+          </div>
+        </div>
+        <div class="feed--review-info">
+          <div class="feed--info-con">
+            <div class="feed--username">
+              <%= username.first_name %>
+            </div>
+            <div class="feed--review-stats">
+              <div class="feed-review-title">
+                <%= "#{review.title}" %>
+              </div>
+              <span class="word-breaker"></span>
+              <div class="feed-review-type">
+                <%= "type"  %>
+              </div>
+            </div>
+          </div>
+          <div class = "feed--review-text">
+            <%= review.description %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>

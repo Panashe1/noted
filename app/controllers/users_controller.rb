@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def community
     @user = User.all
+    @all_album_reviews = AlbumReview.all
+    @all_song_reviews = SongReview.all
   end
 
   def follow
