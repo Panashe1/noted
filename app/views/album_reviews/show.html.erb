@@ -51,10 +51,12 @@
       <div class="display-reviews">
         <div class="reviews p-2">
           <% @reviews.each do |review|%>
+          <a href="/users/<%= review.user_id %>" class="modal-links">
             <div>
-            <%= cl_image_tag User.find(review.user_id).photo.key, class:'review-user-image border border-dark ms-3'%>
-              <%=User.find(review.user_id).first_name%> <%= User.find(review.user_id).last_name %>
+            <%= cl_image_tag User.find(review.user_id).photo.key, class:'review-user-image border border-dark ms-3 me-2'%>
+              <span><%=User.find(review.user_id).username%></span>
             </div>
+          </a>
             <div class="display-album-reviews">
               <div class="album-description">
                 <i class="fas text-muted fa-quote-left me-2"></i><%= review&.description %> <i class="fas text-muted fa-quote-right me-2"></i>

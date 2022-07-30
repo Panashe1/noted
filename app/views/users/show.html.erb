@@ -5,9 +5,9 @@
         <%= cl_image_tag @user.photo.key, class:'profile-img mb-5' %>
         <div>
           <% if @user&.followers&.include?(current_user&.id) && @user&.id != current_user&.id %>
-            <%=  link_to "Unfollow", unfollow_path, method: :post %>
+            <%=  link_to "Unfollow", unfollow_path, method: :post, class:"btn btn-main rounded-modal" %>
           <%elsif @user&.id != current_user&.id&.to_i%>
-            <%= link_to "Follow", follow_path, method: :post %>
+            <%= link_to "Follow", follow_path, method: :post, class:"btn btn-main rounded-modal" %>
           <% end %>
         </div>
       </div>
@@ -35,10 +35,6 @@
         <p class="mb-3">Hi im a music lover, I enjoy listening to RNB, Hiphop, Rap, Jazz and Classical music. The weirdest band I've seen live is a Japanese Jazz-Rock band in Tokyo</p>
         <div class="user-info d-flex justify-content-start py-3">
           <div class="d-flex flex-column me-3">
-            <span class="fs-5">Rated Reviews</span>
-            <span class="fw-bold fs-3 text-center"><%= @album_reviews.count +  @song_reviews.count %></span>
-          </div>
-          <div class="d-flex flex-column me-3">
             <span class="fs-5">Rated Albums</span>
             <span class="fw-bold fs-3 text-center"> <%= @album_reviews.count  %></span>
           </div>
@@ -60,7 +56,7 @@
     <div class="col-sm-12 col-md-6 col-lg-8">
       <div>
         <div class="mb-3 d-flex align-items-end">
-          <%= render "partials/rating-box", class: "me-5", data:@album_reviews[-1]&.rating %>
+          <%= render "partials/rating-box", class: "me-5", data:@album_reviews[-1]&.rating.to_f %>
           <h5><%= @album_reviews[-1]&.title %></h5>
         </div>
         <%= @album_reviews[-1]&.description %>

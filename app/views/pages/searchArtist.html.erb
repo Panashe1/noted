@@ -6,14 +6,14 @@
         <div class = "artist-name">
           <%= @resultsArtist.name %>
         </div>
-        <div class = "artist-genre">
+        <div class = "artist-genre mb-3">
           <% str = "" %>
           <% @resultsArtist.genres.each do |genre| %>
             <% str += genre + ", " %>
           <% end %>
           <%= str[0...-2] %>
         </div>
-        <button class = "more-btn">More</button>
+        <button class="btn btn-main rounded-modal">More</button>
       </div>
     </div>
 
@@ -21,21 +21,24 @@
   </div>
 </div>
 
+<div class="container">
 <div class = "artist-stats">
   <div class = "reviewed-songs-container">
     <div class = "reviews-title">Most Reviewed Songs</div>
     <div class = "title-divider"></div>
-    <ul class = "reviewed-songs">
-      <% @top_tracks.each do |track| %>
-        <li class = "song-item">
-          <div class = "song-info">
-            <div class = "rating-box-artist"> <%= render "partials/rating-box", data: 10 %></div>
-            <div class = "song-name"><%= track.name %></div>
-          </div>
-          <%= link_to "Reviews", song_review_path(track.id), class: "song-reviews" %>
-        </li>
-      <% end %>
-    </ul>
+
+      <ul class = "reviewed-songs">
+        <% @top_tracks.each do |track| %>
+          <li class = "song-item">
+            <div class = "song-info">
+              <div class = "rating-box-artist"> <%= render "partials/rating-box", data:(track.popularity/20.to_f).round(1) %></div>
+              <div class = "song-name"><%= track.name %></div>
+            </div>
+            <%= link_to "Reviews", song_review_path(track.id), class: "song-reviews" %>
+          </li>
+        <% end %>
+      </ul>
+
     <div class = "show-more-icon">
       <i class="fa-solid fa-circle-chevron-down"></i>
     </div>
@@ -54,5 +57,6 @@
         </li>
       <% end %>
     </ul>
+  </div>
   </div>
 </div>
