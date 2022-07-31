@@ -36,7 +36,7 @@
     <%  img_url = album.images[0]['url'] %>
     <% end %>
     <% username = User.find(review.user_id)%>
-    <div class="feed--review-item <%= "#{select_box_size(descriptionSize)}"%> card--cover-img" style="background-image: url(<%=img_url%>);">
+    <div class="feed--review-item <%= "#{select_box_size(descriptionSize)}"%> card--cover-img">
       <div class="feed--review-con">
         <div class="feed--img-con">
           <% unless username.photo.key == nil %>
