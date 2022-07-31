@@ -3,9 +3,28 @@
 <% track_type = "" %>
 <% img_url = "" %>
 <% isTrack = false %>
+<% descriptionSize = 0 %>
+
+<% def select_box_size(str_len) %>
+    <% size = "" %>
+    <% if str_len <= 42 %>
+        <% size =  "default" %>
+    <% elsif (str_len > 42) and (str_len <= 171)  %>
+        <% size =  "horizontal" %>
+    <% elsif (str_len > 171) and (str_len <= 308) %>
+        <% size =  "vertical" %>
+    <% else  %>
+       <%  size =  "big"%>
+    <% end %>
+    <% return size %>
+<% end %>
+
+
+
 <div class="feed--container">
   <%allReviews.each do |review| %>
-    <% randomIndex  = rand(1...sizeLayout.length) %>
+    <% descriptionSize = review.description.length %>
+    <% randomIndex  = rand(0...sizeLayout.length) %>
     <% isTrack = (review.class.name == "SongReview") %>
     <% if (isTrack)  %>
     <%  track = MusicAPI.new.findTrack(review.api_id)  %>
@@ -17,11 +36,11 @@
     <%  img_url = album.images[0]['url'] %>
     <% end %>
     <% username = User.find(review.user_id)%>
-    <div class="feed--review-item <%= "#{sizeLayout[randomIndex]}"%> card--cover-img" style="background-image: url(<%=img_url%>);">
+    <div class="feed--review-item <%= "#{select_box_size(descriptionSize)}"%> card--cover-img" style="background-image: url(<%=img_url%>);">
       <div class="feed--review-con">
         <div class="feed--img-con">
           <% unless username.photo.key == nil %>
-            <%= cl_image_tag username.photo.key, class: 'feed--img review-user-image border border-dark ms-3 me-2'%>
+            <%= cl_image_tag username.photo.key, class: 'feed--img review-user-image border border-dark me-2'%>
           <% else  %>
             <img class = "feed--img review-user-image border border-dark ms-3 me-2"/>
           <% end %>
@@ -50,6 +69,7 @@
             <i class="fa fas text-muted fa-quote-right feed-talking-marks" style="color:#fff;"></i>
           </div>
         </div>
+
       </div>
     </div>
   <% end %>
