@@ -1,23 +1,10 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-
-.user-banner{
-  background-color: #DEDBD3;
-}
-.user-banner-left{
-
-
+.user-banner {
+  background-color: #dedbd3;
 }
 
-.user-banner-right{
-
-}
-
-
-.profile-img{
-  width:400px;
-  height:400px;
+.profile-img {
+  width: 400px;
+  height: 400px;
   object-fit: cover;
   object-position: 0 10%;
   border-radius: 50%;
