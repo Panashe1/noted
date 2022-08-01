@@ -31,14 +31,11 @@
                         input_html: { autocomplete: "new-password" } %>
             <%= f.input :photo, as: :file %>
           </div>
-
           <div class="form-actions d-flex justify-content-evenly align-items-center">
             <%= f.button :submit, "Sign up", class:"btn-main px-5 rounded" %>
             <%= link_to "Log in", new_session_path(resource_name), class:"btn-alt py-1 px-5" %><br />
           </div>
-
         <% end %>
-
         <%# <%= render "devise/shared/links" %>
       </div>
     </div>
@@ -48,13 +45,10 @@
       <hr class="solid mb-3">
       <i class="fa-brands fa-itunes-note note-2"></i>
       <hr class="solid mb-5">
-
-
       <hr class="solid mb-4">
       <i class="fa-brands fa-itunes-note note-3"></i>
       <hr class="solid mb-1">
       <hr class="solid">
     </div>
   </div>
-
 </div>
