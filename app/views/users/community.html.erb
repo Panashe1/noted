@@ -4,6 +4,7 @@
 <% img_url = "" %>
 <% rating = 0 %>
 <% isTrack = false %>
+<% link = "" %>
 <% descriptionSize = 0 %>
 <% def select_box_size(str_len) %>
 <% size = "" %>
@@ -35,10 +36,12 @@
         <%  track = MusicAPI.new.findTrack(review.api_id)  %>
         <%  track_type = "Song"  %>
         <%  img_url = track.album.images[0]['url'] %>
+        <%  link = "/song_reviews/#{track.id}" %>
       <% else %>
         <%  album = MusicAPI.new.findAlbum(review.api_id)  %>
         <%  track_type = "Album"  %>
         <%  img_url = album.images[0]['url'] %>
+        <%  link = "/album_reviews/#{album.id}" %>
       <% end %>
       <% username = User.find(review.user_id)%>
       <div class="feed--review-item <%= "#{sizeLayout[randomIndex]}"%> card--cover-img">
@@ -56,12 +59,16 @@
           <div class="feed--review-info">
             <div class="feed--info-con">
               <div class="feed--username">
+                <a href="/users/<%= review.user_id %>" class="modal-links">
                 <%= username.first_name %>
+                </a>
               </div>
               <div class="feed--review-stats">
-                <div class="feed-review-title">
-                  <%= "#{review.title}" %>
-                </div>
+                  <a href = <%= link %> >
+                    <div class="feed-review-title">
+                      <%= "#{review.title}" %>
+                    </div>
+                  </a>
                 <span class="word-breaker"></span>
                 <div class="feed-review-type">
                   <%= "#{track_type}"  %>

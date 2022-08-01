@@ -103,12 +103,32 @@ $spanCol: 170px;
   font-size: 0.7em;
 }
 
+.feed--username > a {
+  color: black;
+  transition: all 0.2s;
+}
+
+.feed--username > a:hover {
+  background-color: transparent;
+  border-bottom: 1px solid black;
+}
+
 .feed--review-stats {
   display: flex;
   align-items: center;
   font-size: 1em;
   gap: 5px;
   flex-wrap: wrap;
+}
+
+.feed--review-stats > a {
+  transition: all 0.2s;
+  color: black;
+}
+
+.feed--review-stats > a:hover {
+  background-color: transparent;
+  color: white;
 }
 
 .feed--rating-box .score-box {
