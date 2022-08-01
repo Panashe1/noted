@@ -2,76 +2,80 @@
 <% sizeLayout = ["horizontal", "vertical", "big", "default", "default", "default"]  %>
 <% track_type = "" %>
 <% img_url = "" %>
+<% rating = 0 %>
 <% isTrack = false %>
 <% descriptionSize = 0 %>
-
 <% def select_box_size(str_len) %>
-    <% size = "" %>
-    <% if str_len <= 42 %>
-        <% size =  "default" %>
-    <% elsif (str_len > 42) and (str_len <= 171)  %>
-        <% size =  "horizontal" %>
-    <% elsif (str_len > 171) and (str_len <= 308) %>
-        <% size =  "vertical" %>
-    <% else  %>
-       <%  size =  "big"%>
-    <% end %>
-    <% return size %>
+<% size = "" %>
+<% if str_len <= 42 %>
+  <% size =  "default" %>
+<% elsif (str_len > 42) and (str_len <= 171)  %>
+  <% size =  "horizontal" %>
+<% elsif (str_len > 171) and (str_len <= 308) %>
+  <% size =  "vertical" %>
+<% else  %>
+  <%  size =  "big"%>
+<% end %>
+<% return size %>
 <% end %>
 
 
-
-<div class="feed--container">
-  <%allReviews.each do |review| %>
-    <% descriptionSize = review.description.length %>
-    <% randomIndex  = rand(0...sizeLayout.length) %>
-    <% isTrack = (review.class.name == "SongReview") %>
-    <% if (isTrack)  %>
-    <%  track = MusicAPI.new.findTrack(review.api_id)  %>
-    <%  track_type = "Song"  %>
-    <%  img_url = track.album.images[0]['url'] %>
-    <% else %>
-    <%  album = MusicAPI.new.findAlbum(review.api_id)  %>
-    <%  track_type = "Album"  %>
-    <%  img_url = album.images[0]['url'] %>
-    <% end %>
-    <% username = User.find(review.user_id)%>
-    <div class="feed--review-item <%= "#{select_box_size(descriptionSize)}"%> card--cover-img">
-      <div class="feed--review-con">
-        <div class="feed--img-con">
-          <% unless username.photo.key == nil %>
-            <%= cl_image_tag username.photo.key, class: 'feed--img review-user-image border border-dark me-2'%>
-          <% else  %>
-            <img class = "feed--img review-user-image border border-dark ms-3 me-2"/>
-          <% end %>
-          <div class="feed--rating-box">
-            <%= render "partials/rating-box", data:(100/20.to_f).round(1) %>
-          </div>
-        </div>
-        <div class="feed--review-info">
-          <div class="feed--info-con">
-            <div class="feed--username">
-              <%= username.first_name %>
-            </div>
-            <div class="feed--review-stats">
-              <div class="feed-review-title">
-                <%= "#{review.title}" %>
-              </div>
-              <span class="word-breaker"></span>
-              <div class="feed-review-type">
-                <%= "#{track_type}"  %>
-              </div>
+<div class="feed--main-container container">
+  <div class="feed--header">
+    <div class = "reviews-title">Your Feed</div>
+    <div class="title-divider"></div>
+  </div>
+  <div class="feed--container">
+    <%allReviews.each do |review| %>
+      <% descriptionSize = review.description.length %>
+      <% randomIndex  = rand(0...sizeLayout.length) %>
+      <% rating = review.rating %>
+      <% isTrack = (review.class.name == "SongReview") %>
+      <% if (isTrack)  %>
+        <%  track = MusicAPI.new.findTrack(review.api_id)  %>
+        <%  track_type = "Song"  %>
+        <%  img_url = track.album.images[0]['url'] %>
+      <% else %>
+        <%  album = MusicAPI.new.findAlbum(review.api_id)  %>
+        <%  track_type = "Album"  %>
+        <%  img_url = album.images[0]['url'] %>
+      <% end %>
+      <% username = User.find(review.user_id)%>
+      <div class="feed--review-item <%= "#{sizeLayout[randomIndex]}"%> card--cover-img">
+        <div class="feed--review-con">
+          <div class="feed--img-con">
+            <% unless username.photo.key == nil %>
+              <%= cl_image_tag username.photo.key, class: 'feed--img review-user-image border border-dark me-2'%>
+            <% else  %>
+              <img class = "feed--img review-user-image border border-dark ms-3 me-2"/>
+            <% end %>
+            <div class="feed--rating-box">
+              <%= render "partials/rating-box", data:(rating).round(1) %>
             </div>
           </div>
-          <div class = "feed--review-text">
-            <i class="fa fas text-muted fa-quote-left feed-talking-marks" style="color:#fff;"></i>
-            <div class="review--text"><%=review.description%></div>
-            <i class="fa fas text-muted fa-quote-right feed-talking-marks" style="color:#fff;"></i>
+          <div class="feed--review-info">
+            <div class="feed--info-con">
+              <div class="feed--username">
+                <%= username.first_name %>
+              </div>
+              <div class="feed--review-stats">
+                <div class="feed-review-title">
+                  <%= "#{review.title}" %>
+                </div>
+                <span class="word-breaker"></span>
+                <div class="feed-review-type">
+                  <%= "#{track_type}"  %>
+                </div>
+              </div>
+            </div>
+            <div class = "feed--review-text">
+              <i class="fa fas text-muted fa-quote-left feed-talking-marks" style="color:#fff;"></i>
+              <div class="review--text"><%=review.description%></div>
+              <i class="fa fas text-muted fa-quote-right feed-talking-marks" style="color:#fff;"></i>
+            </div>
           </div>
         </div>
-
       </div>
-    </div>
-  <% end %>
-
+    <% end %>
+  </div>
 </div>
