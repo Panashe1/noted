@@ -3,13 +3,6 @@
   margin-bottom: 2rem;
 }
 
-.hero-btn {
-  border-radius: 20px;
-  width: 25rem;
-  color: #4d5759;
-  margin-bottom: 4rem;
-}
-
 .divider-noted {
   height: 100%;
   border-right: 3px #b4c3b2 solid;
@@ -18,16 +11,19 @@
 .hero-heading {
   font-size: 8rem;
   color: #4d5759;
+  position: relative;
 }
 
 .hero-text {
   color: #4d5759;
+  margin-top: -5rem;
 }
 
 .hero-img {
   width: 100%;
-  height: 80vh;
+  height: 70vh;
   object-fit: cover;
+  clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
 }
 
 .hero-text {
