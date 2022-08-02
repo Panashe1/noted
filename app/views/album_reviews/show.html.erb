@@ -49,6 +49,11 @@
       <h2 class="ms-3">Hot Reviews</h2>
       <hr>
       <div class="display-reviews">
+        <% if @reviews.empty? %>
+        <h4 class ="no-reviews-title">
+          Be the first to post a review!
+        </h4>
+        <% end %>
         <div class="reviews p-2">
           <% @reviews.each do |review|%>
             <a href="/users/<%= review.user_id %>" class="modal-links">

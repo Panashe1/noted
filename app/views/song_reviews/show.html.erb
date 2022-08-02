@@ -33,6 +33,11 @@
   <h2 class="ms-3 mt-4">Hot Reviews</h2>
   <hr>
   <div class="display-reviews mt-2">
+    <% if @reviews.empty? %>
+      <h4 class ="no-reviews-title">
+        Be the first to post a review!
+      </h4>
+    <% end %>
     <div class="reviews p-2">
       <% @reviews.each do |review|%>
         <div>
