@@ -7,8 +7,19 @@
     #dedbd3 100%
   );
   height: 450px;
-  display: flex;
 }
+.song-name{
+  flex-grow: 1;
+}
+
+.song-img {
+  height: 25rem;
+  width: 25rem;
+  margin-top: 12.5px;
+  margin-right: 2rem;
+  margin-left: 1rem;
+}
+
 .song-rating-box {
   margin-right: -1.875rem;
   margin-top: 0.313rem;
@@ -19,29 +30,36 @@
 }
 
 .song-review {
-  border: 1mm ridge #e4b2b89b;
-  width: 525px;
-  margin-right: 20px;
-  border-radius: 20px;
+  border: 1mm ridge #dedbd3;
+  width: 570px;
+  margin-right: 1.25rem;
+  border-radius: 1.25rem;
+  margin-left: 1.25rem;
+  height: 420px;
+  margin-top: 1rem;
 }
 
 #song_review_description {
-  width: 137%;
-  height: 242px;
-  margin-left: -40px;
-  border-radius: 10px;
-  margin-top: -41px;
+  width: 140%;
+  height: 15.125rem;
+  margin-left: -2.625rem;
+  border-radius: 0.625rem;
+  margin-top: -2.563rem;
+  position: relative;
 }
 
 #song_review_rating {
-  width: 137%;
-  margin-left: -38px;
-  border-radius: 10px;
+  margin-left: -2.5625rem;
+  width: 140%;
+  border-radius: 0.625rem;
+  position: relative;
 }
 
-.song-btn {
-  width: 137%;
+.song-submit{
+  margin-left: -2.625rem;
+  width: 140%;
   height: 38px;
+  position: relative;
 }
 
 .rating-text {
@@ -51,4 +69,9 @@
 
 .display-song-reviews {
   width: 80%;
+}
+
+.song-box {
+  margin-top: 0.5rem;
+  margin-right: -1.75rem;
 }

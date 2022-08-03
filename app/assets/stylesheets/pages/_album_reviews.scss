@@ -11,13 +11,14 @@
     #e4b2b89b 100%
   );
   height: 450px;
-  display: flex;
+  width: 100%;
 }
 
 .album-img {
   height: 25rem;
   width: 25rem;
   margin-top: 5px;
+  margin-right: 2rem;
 }
 
 .album-name {
@@ -29,7 +30,7 @@
 }
 
 .songs {
-  margin-left: 0.875rem;
+  margin-left: -11.6rem;
   margin-top: 1rem;
 }
 
@@ -60,17 +61,18 @@
 
 .album-info {
   margin-top: 8.438rem;
+  flex-grow: 1;
 }
 
 .album-review {
   border: 1mm ridge #dedbd3;
-  width: 600px;
-  margin-right: 1.25rem;
+  width: 550px;
+  margin-right: 0.25rem;
   border-radius: 1.25rem;
 }
 
 #album_review_description {
-  width: 137%;
+  width: 140%;
   height: 15.125rem;
   margin-left: -2.625rem;
   border-radius: 0.625rem;
@@ -78,13 +80,15 @@
 }
 
 #album_review_rating {
-  margin-left: -2.5rem;
-  width: 137%;
+  margin-left: -2.5625rem;
+  width: 140%;
   border-radius: 0.625rem;
 }
 
 .album-submit {
-  margin-left: -2.563rem;
+  margin-left: -2.625rem;
+  width: 140%;
+  height: 38px
 }
 
 .display-album-reviews {
@@ -116,11 +120,6 @@
   margin-left: 1%;
 }
 
-.review-submit {
-  margin-left: -2.438rem;
-  width: 137%;
-}
-
 .rating-value {
   margin-right: 0.625rem;
 }
@@ -131,7 +130,7 @@
 
 .album-box {
   margin-top: 8.938rem;
-  margin-right: -1.375rem;
+  margin-right: -2rem;
 }
 
 .no-reviews-title {

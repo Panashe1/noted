@@ -1,4 +1,4 @@
-<div class="album-banner p-3 ">
+<div class="album-banner p-3 d-flex justify-content-end">
   <div class="album-img">
     <img src="<%= @album.images[0]['url'] %>" class="album-img border border-dark border-4 p-2" alt="">
   </div>
@@ -7,10 +7,14 @@
       <%= render "partials/rating-box", data:@finalsum.to_f.round(1)%>
     </div>
     <div class="album-info">
-      <div class="album-details border-bottom border-dark me-3">
-        <h1 class='album-name'><%= @album&.name %> </h1>
-        <p class="songs">Album-<%= @album.total_tracks%>  Tracks- <%= @album.release_date.split("-").first %></p>
-      </div>
+      <div class="album-details d-flex justify-content-between align-items-end border-bottom border-dark me-3">
+        <div>
+          <h1 class='album-name'><%= @album&.name %> </h1>
+        </div>
+        <div>
+          <p class="songs">Album-<%= @album.total_tracks%>  Tracks- <%= @album.release_date.split("-").first %></p>
+        </div>
+        </div>
       <h4 class="artist-nm"><%= @album.artists[0]&.name %></h4>
     </div>
   </div>
@@ -22,10 +26,14 @@
       <%= f.input :title, as: :hidden, input_html: { value: @album.name }  %>
       <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
       <%= f.input :api_id, as: :hidden, input_html: { value: @album.id } %>
-      <%= f.submit "Submit review", class: "btn-main px-5 rounded album-submit song-btn"%>
+      <%= f.submit "Submit review", class: "btn-main px-5 rounded album-submit"%>
     <% end %>
   </div>
 </div>
+
+
+
+
 <div class='row'>
   <div class='col-lg-6 col-md-6 col-sm-12'>
     <div class="display-songs mt-3">
