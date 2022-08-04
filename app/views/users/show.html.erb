@@ -13,6 +13,11 @@
           <%elsif @user&.id != current_user&.id&.to_i%>
             <%= link_to "Follow", follow_path, method: :post, class:"btn btn-main rounded-modal" %>
           <% end %>
+
+          <% if @user.id === current_user.id %>
+            <%=  link_to "Edit", edit_user_registration_path, class:"btn btn-main rounded-modal" %>
+          <% end %>
+
         </div>
       </div>
     </div>
@@ -36,7 +41,7 @@
         </div>
         <hr class="solid mb-3">
         <h5 class="fs-3">About Me</h5>
-        <p class="mb-3">Hi im a music lover, I enjoy listening to RNB, Hiphop, Rap, Jazz and Classical music. The weirdest band I've seen live is a Japanese Jazz-Rock band in Tokyo</p>
+        <p class="mb-3"><%= @user.description %></p>
         <div class="user-info d-flex justify-content-start py-3">
           <div class="d-flex flex-column me-3">
             <span class="fs-5">Rated Albums</span>

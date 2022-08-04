@@ -31,8 +31,4 @@ class UsersController < ApplicationController
     current_user.save
     redirect_to users_path(@user)
   end
-
-
-
-
 end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
-  get 'users/community' => 'users#community'
+  get 'users/community' => 'users#community', as: 'community'
   get 'users/:id' => 'users#show', as: 'users'
 
   post 'users/:id/follow' => 'users#follow', as: 'follow'
