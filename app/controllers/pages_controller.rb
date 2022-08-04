@@ -32,4 +32,7 @@ class PagesController < ApplicationController
     @results_more_albums = MusicAPI.new.display_more_albums(params[:searchText]['query']);
     @results_more_tracks = MusicAPI.new.display_more_tracks(params[:searchText]['query']);
   end
+
+  def contact
+  end
 end
