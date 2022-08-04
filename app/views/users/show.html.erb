@@ -21,14 +21,15 @@
         </div>
       </div>
     </div>
+
     <div class="col col-sm-12 col-md-6 d-flex align-items-center">
-      <div class="user-banner-right d-flex flex-column justify-content-between">
+      <div class="user-banner-right d-flex flex-column justify-content-between w-100">
         <div class="d-flex justify-content-between align-items-start">
           <div class="fs-1">
             <%=@user&.first_name %>
             <%= @user&.last_name %>
           </div>
-          <div class="d-flex">
+          <div class="d-flex me-5">
             <div type="button" data-bs-toggle="modal" data-bs-target="#followers-modal" class="text-center">
               <h5 class="me-3">Followers</h5>
               <h5><%= @user&.followers.length %></h5>
@@ -39,6 +40,9 @@
             </div>
           </div>
         </div>
+       <div>
+
+       <div>
         <hr class="solid mb-3">
         <h5 class="fs-3">About Me</h5>
         <p class="mb-3"><%= @user.description %></p>

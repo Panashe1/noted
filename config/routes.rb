@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => :registrations }
   root 'pages#home'
   get 'users/community' => 'users#community', as: 'community'
   get 'users/:id' => 'users#show', as: 'users'
