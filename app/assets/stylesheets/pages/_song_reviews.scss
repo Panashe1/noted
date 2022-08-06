@@ -60,6 +60,14 @@
   width: 140%;
   height: 38px;
   position: relative;
+  transition: 0.3s;
+  border: none;
+}
+
+.song-submit:hover {
+  color: white;
+  background-color: #b4c3b2;
+
 }
 
 .rating-text {

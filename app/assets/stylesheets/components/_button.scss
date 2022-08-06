@@ -1,6 +1,12 @@
 .btn-main{
   background-color: #E4B2B8;
   color: #4D5759;
+  border: none;
+
+  &:hover{
+    color: white !important;
+    background-color: #b4c3b2 !important;
+  }
 }
 
 .mr-5{
