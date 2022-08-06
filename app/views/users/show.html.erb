@@ -9,12 +9,12 @@
         <% end %>
         <div>
           <% if @user&.followers&.include?(current_user&.id) && @user&.id != current_user&.id %>
-            <%=  link_to "Unfollow", unfollow_path, method: :post, class:"btn btn-main btn-lg rounded-modal text-dark px-4 py-1" %>
+            <%=  link_to "Unfollow", unfollow_path, method: :post, class:"btn btn-main btn-lg rounded-modal  px-5 py-1" %>
           <%elsif @user&.id != current_user&.id&.to_i%>
-            <%= link_to "Follow", follow_path, method: :post, class:"btn btn-main btn-lg rounded-modal text-dark px-4 py-1" %>
+            <%= link_to "Follow", follow_path, method: :post, class:"btn btn-main btn-lg rounded-modal  px-5 py-1" %>
           <% end %>
           <% if @user.id === current_user.id %>
-            <%=  link_to "Edit", edit_user_registration_path, class:"btn btn-main btn-lg rounded-modal text-dark px-4 py-1" %>
+            <%=  link_to "Edit", edit_user_registration_path, class:"btn btn-main btn-lg rounded-modal  px-5 py-1" %>
           <% end %>
         </div>
       </div>
