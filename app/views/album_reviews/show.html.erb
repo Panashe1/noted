@@ -26,7 +26,7 @@
       <%= f.input :title, as: :hidden, input_html: { value: @album.name }  %>
       <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
       <%= f.input :api_id, as: :hidden, input_html: { value: @album.id } %>
-      <%= f.submit "Submit review", class: "btn btn-main btn-lg rounded-modal album-submit"%>
+      <%= f.submit "Submit review", class: "btn-main px-5 rounded album-submit text-dark"%>
     <% end %>
   </div>
 </div>
