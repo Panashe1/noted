@@ -53,7 +53,7 @@
         <div class="album-rating">
           <%= render "partials/rating-box", data:review.rating%>
           <% if review.user_id == current_user.id %>
-            <%= button_to "Delete", song_review_path(review.id), class: 'btn link-danger hover-icon', method: :delete%>
+            <%= button_to "Delete", song_review_path(review.id), class: 'btn link-danger hover-icon', method: :delete, data: { disable_with: "Please wait..." }%>
           <% end %>
         </div>
       </div>

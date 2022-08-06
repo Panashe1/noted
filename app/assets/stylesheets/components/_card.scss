@@ -110,4 +110,7 @@ div .link-dark:hover {
   border: 1px solid black;
   border-radius: 10px;
   background-color: #b4c3b2;
+  &:hover {
+    background-color: #b4c3b2 !important;
+  }
 }
