@@ -30,7 +30,6 @@
   }
 }
 
-
 div .link-dark:hover {
   border: 0px;
   border-radius: 25px;
@@ -56,9 +55,8 @@ div .link-dark:hover {
   background-color: #b4c3b2;
 }
 
-.rounded-modal{
+.rounded-modal {
   border-radius: 10px;
-
 }
 
 .square {
@@ -66,49 +64,46 @@ div .link-dark:hover {
   height: width;
 }
 
-
 // QUAD SONG DISPLAY /////////////////
 .quad-display-container {
   display: grid;
-  grid-template-columns: 150px 150px;
-  grid-auto-rows: 150px;
-  gap: 20px;
-
+  grid-template-columns: 9.375rem 9.375rem;
+  grid-auto-rows: 9.375rem;
+  gap: 1.25rem;
 
   h5 {
-    font-size: 1.25rem;
-    margin-left:10px ;
-  }
-
-  p{
     font-size: 1rem;
-    margin-left: 10px;
+    margin-left: 0.625rem;
   }
 
-  .score-box{
-    margin-left: 10px;
+  p {
+    font-size: 0.8rem;
+    margin-left: 0.625rem;
   }
 
+  .score-box {
+    margin-left: 0.625rem;
+  }
 
-  span{
+  span {
     font-size: 0.5rem;
-    margin-left: 10px ;
+    margin-left: 0.625rem;
   }
 
-    .score-box {
-      display: inline-flex;
-      border: 2px solid black;
-      padding: 4px 10px;
-      border-radius: 12px;
-      gap: 3px;
-      justify-content: center;
-      align-items: center;
-    }
+  .score-box {
+    display: inline-flex;
+    border: 2px solid black;
+    padding: 4px 10px;
+    border-radius: 12px;
+    gap: 3px;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .rating-logo {
-      width: 1rem;
-      height: 1rem;
-    }
+  .rating-logo {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 .quad-item {
