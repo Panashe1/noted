@@ -95,6 +95,14 @@ $spanCol: 170px;
   align-items: center;
 }
 
+.feed--img-con a {
+  background-color: transparent;
+}
+
+.feed--img-con a:hover {
+  background-color: transparent;
+}
+
 .feed--img-con .feed--img {
   margin-left: 0px !important;
 }
@@ -126,7 +134,7 @@ $spanCol: 170px;
 .feed--review-stats {
   display: flex;
   align-items: center;
-  font-size: 1em;
+  font-size: 0.85em;
   gap: 5px;
   flex-wrap: wrap;
 }

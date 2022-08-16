@@ -34,13 +34,6 @@ class MusicAPI
     return @track
   end
 
-# return a group of Recommendations based on the the defined below data
-  def randomRecommendations()
-    @random = RSpotify::Recommendations.generate(seed_artists: ['0oSGxfWSnnOXhD2fKuzsmi'], seed_tracks: ['0oSGxfWSnnOXhD2fKuzsmi'])
-    return @random
-  end
-
-
   def display_more_albums(searchTerm)
     @albums = RSpotify::Album.search(searchTerm)
     return @albums[0..17]

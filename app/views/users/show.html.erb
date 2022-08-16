@@ -1,5 +1,5 @@
-<div class="container-fluid user-banner">
-  <div class="row">
+<div class="container-fluid">
+  <div class="row user-banner">
     <div class="col col-sm-12 col-md-6 my-5" >
       <div class="user-banner-left d-flex flex-column justify-content-center align-items-center">
         <% unless @user.photo.key == nil %>
@@ -9,21 +9,27 @@
         <% end %>
         <div>
           <% if @user&.followers&.include?(current_user&.id) && @user&.id != current_user&.id %>
-            <%=  link_to "Unfollow", unfollow_path, method: :post, class:"btn btn-main rounded-modal" %>
+            <%=  link_to "Unfollow", unfollow_path, method: :post, class:"btn btn-main btn-lg rounded-modal text-dark px-4 py-1" %>
           <%elsif @user&.id != current_user&.id&.to_i%>
-            <%= link_to "Follow", follow_path, method: :post, class:"btn btn-main rounded-modal" %>
+            <%= link_to "Follow", follow_path, method: :post, class:"btn btn-main btn-lg rounded-modal text-dark px-4 py-1" %>
+          <% end %>
+          <% if @user.id === current_user.id %>
+            <%=  link_to "Edit", edit_user_registration_path, class:"btn btn-main btn-lg rounded-modal text-dark px-4 py-1" %>
           <% end %>
         </div>
       </div>
     </div>
     <div class="col col-sm-12 col-md-6 d-flex align-items-center">
-      <div class="user-banner-right d-flex flex-column justify-content-between">
+      <div class="user-banner-right d-flex flex-column justify-content-between w-100">
         <div class="d-flex justify-content-between align-items-start">
           <div class="fs-1">
-            <%=@user&.first_name %>
-            <%= @user&.last_name %>
+            <h1>
+              <%=@user&.first_name %>
+              <%= @user&.last_name %>
+            </h1>
+            <span class="fs-6 text-muted">@<%= @user&.username %></span>
           </div>
-          <div class="d-flex">
+          <div class="d-flex me-5">
             <div type="button" data-bs-toggle="modal" data-bs-target="#followers-modal" class="text-center">
               <h5 class="me-3">Followers</h5>
               <h5><%= @user&.followers.length %></h5>
@@ -34,109 +40,113 @@
             </div>
           </div>
         </div>
-        <hr class="solid mb-3">
-        <h5 class="fs-3">About Me</h5>
-        <p class="mb-3">Hi im a music lover, I enjoy listening to RNB, Hiphop, Rap, Jazz and Classical music. The weirdest band I've seen live is a Japanese Jazz-Rock band in Tokyo</p>
-        <div class="user-info d-flex justify-content-start py-3">
-          <div class="d-flex flex-column me-3">
-            <span class="fs-5">Rated Albums</span>
-            <span class="fw-bold fs-3 text-center"> <%= @album_reviews.count  %></span>
-          </div>
-          <div class="d-flex flex-column me-3">
-            <span class="fs-5">Rated Songs</span>
-            <span class="fw-bold fs-3 text-center"><%= @song_reviews.count %></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container my-5" id="recent-reviews-album">
-  <div class="d-flex justify-content-between align-items-end">
-    <h2 class="fs-2">Your Recent Album Reviews</h2>
-  </div>
-  <hr class="solid mb-3">
-  <div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-8">
-      <div>
-        <div class="mb-3 d-flex align-items-end">
-          <%= render "partials/rating-box", class: "me-5", data:@album_reviews[-1]&.rating.to_f %>
-          <h5><%= @album_reviews[-1]&.title %></h5>
-        </div>
-        <%= @album_reviews[-1]&.description %>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <%= render "partials/quad_tracks", data:@album_reviews, class:"d-flex align-items-end" %>
-    </div>
-  </div>
-</div>
-<div class="container mt-5" id="recent-reviews-song">
-  <div class="d-flex justify-content-between align-items-end">
-    <h2 class="fs-2">Your Recent Song Reviews</h2>
-  </div>
-  <hr class="solid mb-3">
-  <div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-8">
-      <div>
-        <div class="mb-3 d-flex align-items-end">
-          <%= render "partials/rating-box", class: "me-5", data:@song_reviews[-1]&.rating %>
-          <h5><%= @song_reviews[-1]&.title %></h5>
-        </div>
-        <%= @song_reviews[-1]&.description %>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <%= render "partials/quad_tracks_songs", data:@song_reviews, class:"d-flex align-items-end" %>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="followers-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content rounded-modal">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Followers</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <% @user.followers.each do |id|%>
-          <%[User.find(id)].each do |user|%>
-            <a href="/users/<%= user.id %>" class="modal-links">
-              <div class="mb-3">
-                <%= cl_image_tag user.photo.key, class:'avatar me-2' %>
-                <%= user.username %>
+        <div>
+          <div>
+            <hr class="solid mb-3">
+            <h5 class="fs-3">About Me</h5>
+            <p class="mb-3"><%= @user.description %></p>
+            <div class="user-info d-flex justify-content-start py-3">
+              <div class="d-flex flex-column me-3">
+                <span class="fs-5">Rated Albums</span>
+                <span class="fw-bold fs-3 text-center"> <%= @album_reviews.count  %></span>
               </div>
-            </a>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-main rounded-modal" data-bs-dismiss="modal">Close</button>
+              <div class="d-flex flex-column me-3">
+                <span class="fs-5">Rated Songs</span>
+                <span class="fw-bold fs-3 text-center"><%= @song_reviews.count %></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="modal fade" id="following-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content rounded-modal">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Following</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="container my-5" id="recent-reviews-album">
+    <div class="d-flex justify-content-between align-items-end">
+      <h2 class="fs-2">Your Recent Album Reviews</h2>
+    </div>
+    <hr class="solid mb-3">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-8">
+        <div>
+          <div class="mb-3 d-flex align-items-end">
+            <%= render "partials/rating-box", class: "me-5", data:@album_reviews[-1]&.rating.to_f %>
+            <h5><%= @album_reviews[-1]&.title %></h5>
+          </div>
+          <%= @album_reviews[-1]&.description %>
+        </div>
       </div>
-      <div class="modal-body">
-        <% @user.following.each do |id|%>
-          <%[User.find(id)].each do |user|%>
-            <a href="/users/<%= user.id %>" class="modal-links">
-              <div class="mb-3">
-                <%= cl_image_tag user.photo.key, class:'avatar me-2'%>
-                <%= user.username %>
-              </div>
-            </a>
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <%= render "partials/quad_tracks", data:@album_reviews, class:"d-flex align-items-end" %>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5" id="recent-reviews-song">
+    <div class="d-flex justify-content-between align-items-end">
+      <h2 class="fs-2">Your Recent Song Reviews</h2>
+    </div>
+    <hr class="solid mb-3">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-8">
+        <div>
+          <div class="mb-3 d-flex align-items-end">
+            <%= render "partials/rating-box", class: "me-5", data:@song_reviews[-1]&.rating %>
+            <h5><%= @song_reviews[-1]&.title %></h5>
+          </div>
+          <%= @song_reviews[-1]&.description %>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <%= render "partials/quad_tracks_songs", data:@song_reviews, class:"d-flex align-items-end" %>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="followers-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content rounded-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Followers</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <% @user.followers.each do |id|%>
+            <%[User.find(id)].each do |user|%>
+              <a href="/users/<%= user.id %>" class="modal-links">
+                <div class="mb-3">
+                  <%= cl_image_tag user&.photo&.key, class:'avatar me-2' %>
+                  <%= user.username %>
+                </div>
+              </a>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-main rounded-modal" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-main rounded-modal" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
+  <div class="modal fade" id="following-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content rounded-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Following</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <% @user.following.each do |id|%>
+            <%[User.find(id)].each do |user|%>
+              <a href="/users/<%= user.id %>" class="modal-links">
+                <div class="mb-3">
+                  <%= cl_image_tag user&.photo&.key, class:'avatar me-2'%>
+                  <%= user&.username %>
+                </div>
+              </a>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-main rounded-modal" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>

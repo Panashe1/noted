@@ -21,7 +21,7 @@
             <% @results_more_artists.each do |artist|  %>
               <% background_img = "" %>
               <% unless artist.images.empty? %>
-                <% background_img = artist.images[0]['url']%>
+                <% background_img = artist.images[0]&.url %>
               <% else %>
                 <% background_img = "https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png" %>
               <% end %>
@@ -39,7 +39,7 @@
             <% @results_more_albums.each do |album|  %>
               <% background_img = "" %>
               <% unless album.images.empty? %>
-                <% background_img = album.images[0]['url']%>
+                <% background_img = album.images[0]&.url %>
               <% else %>
                 <% background_img = "https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png" %>
               <% end %>
@@ -57,7 +57,7 @@
             <% @results_more_tracks.each do |track|  %>
               <% background_img = "" %>
               <% unless track.album.images.empty? %>
-                <% background_img = track.album.images[0]['url']%>
+                <% background_img = track.album.images[0]&.url %>
               <% else %>
                 <% background_img = "https://res.cloudinary.com/dh8a307rs/image/upload/v1657791144/Artboard_3_tztpx9.png" %>
               <% end %>

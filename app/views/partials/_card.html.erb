@@ -1,7 +1,7 @@
 <div class="card reveal" style="width: 18rem;">
   <div class="card-body p-2 d-flex flex-column justify-content-between align-items-center ">
     <div class="dot mb-2"></div>
-    <%= image_tag(data.images[0]['url'], class:'album-image mb-3')  %>
+    <%= image_tag(data.images[0]&.url , class:'album-image mb-3')  %>
     <h5><%= data&.name %></h5>
     <span><i class="fa-solid fa-music"></i><%= data&.popularity %></span>
   </div>

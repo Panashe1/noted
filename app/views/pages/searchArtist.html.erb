@@ -13,10 +13,10 @@
           <% end %>
           <%= str[0...-2] %>
         </div>
-        <button class="btn btn-main rounded-modal">More</button>
+        <div class = "rating-box-artist"> <%= render "partials/rating-box", data:(@resultsArtist.popularity/20.to_f).round(1) %></div>
       </div>
     </div>
-    <img class = "artist-image" src=<%= @resultsArtist.images[0]['url'] %>>
+    <img class = "artist-image" src=<%= @resultsArtist.images[0]&.url  %>>
   </div>
 </div>
 <div class="container">
@@ -46,7 +46,7 @@
         <% @top_albums.each do |album|  %>
           <li class = reviewed-albums-item>
             <a href=<%="/album_reviews/#{album.id}"%>>
-            <img class = "albums-review-img"src = <%= album.images[0]['url']%> />
+            <img class = "albums-review-img"src = <%= album.images[0]&.url %> />
             <div class = "reviewed-album-title"><%= link_to album.name, album_review_path(album.id)%></div>
             </a>
           </li>

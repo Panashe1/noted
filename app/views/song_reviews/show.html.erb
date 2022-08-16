@@ -1,15 +1,19 @@
-<div class="song-banner p-3">
-  <div class="album-img">
-    <img src="<%= @album.images[0]['url'] %>" class="album-img ms-4 border border-dark border-4 p-2" alt="">
+<div class="song-banner d-flex justify-content-end">
+  <div class="song-img">
+    <img src="<%= @album.images[0]&.url  %>" class="song-img border border-dark border-4 p-2" alt="">
   </div>
-  <div class="container song-container album-details">
-    <div class="song-rating-box">
+  <div class="container song-container song-details d-flex justify-content-center">
+    <div class="song-box">
       <%= render "partials/rating-box", data:(@song.popularity/20.to_f).round(1)%>
     </div>
-    <div class="song-details">
-      <div class="song-name">
-        <h1><%= @song.name%> </h1>
-        <hr>
+    <div class="song-details flex-grow-1">
+      <div class="song-name border-bottom border-dark d-flex justify-content-between align-items-end ">
+        <div>
+          <h1><%= @song.name%> </h1>
+        </div>
+        <div>
+          <p><%= @song.album.name%> </p>
+        </div>
       </div>
       <h4 class="artist-nm"><%= @album.artists[0].name %></h4>
     </div>
@@ -22,10 +26,9 @@
       <%= f.input :title, as: :hidden, input_html: { value: @song.name }  %>
       <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
       <%= f.input :api_id, as: :hidden, input_html: { value: @song.id } %>
-      <%= f.submit "Submit review", class: "btn-main px-5 rounded review-submit song-btn"%>
+      <%= f.submit "Submit review", class: "btn-main px-5 rounded-modal song-submit "%>
     <% end %>
   </div>
-</div>
 </div>
 <div class= "container display-song-reviews">
   <h2 class="ms-3 mt-4">Hot Reviews</h2>
@@ -33,28 +36,28 @@
   <div class="display-reviews mt-2">
     <% if @reviews.empty? %>
       <h4 class ="no-reviews-title">
-        Be the first to post a review!
+        There are currently no reviews for this song.
       </h4>
     <% end %>
-    <div class="reviews p-2">
-      <% @reviews.each do |review|%>
+    <% @reviews.each do |review|%>
+      <a href="/users/<%= review.user_id %>" class="modal-links">
         <div>
           <%= cl_image_tag User.find(review.user_id).photo.key, class:'review-user-image border border-dark ms-3'%>
-          &nbsp;<%=User.find(review.user_id).first_name%> <%= User.find(review.user_id).last_name %>
+          &nbsp;<%=User.find(review.user_id).username%>
         </div>
-        <div class="display-album-reviews">
-          <div class="album-description">
-            <i class="fas text-muted fa-quote-left me-2"></i><%= review.description %> &nbsp;<i class="fas text-muted fa-quote-right me-2"></i>
-          </div>
-          <div class="album-rating">
-            <%= render "partials/rating-box", data:review.rating%>
-            <% if review.user_id == current_user.id %>
-              <%= button_to "Delete", song_review_path(review.id), class: 'btn link-danger hover-icon', method: :delete%>
-            <% end %>
-          </div>
+      </a>
+      <div class="display-album-reviews">
+        <div class="album-description">
+          <i class="fas text-muted fa-quote-left me-2"></i><%= review.description %> &nbsp;<i class="fas text-muted fa-quote-right me-2"></i>
         </div>
-        <hr>
-      <%  end  %>
-    </div>
+        <div class="album-rating">
+          <%= render "partials/rating-box", data:review.rating%>
+          <% if review.user_id == current_user.id %>
+            <%= button_to "Delete", song_review_path(review.id), class: 'btn link-danger hover-icon', method: :delete, data: { disable_with: "Please wait..." }%>
+          <% end %>
+        </div>
+      </div>
+      <hr>
+    <%  end  %>
   </div>
 </div>

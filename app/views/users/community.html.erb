@@ -12,7 +12,7 @@
   <% size =  "default" %>
 <% elsif (str_len > 42) and (str_len <= 171)  %>
   <% size =  "horizontal" %>
-<% elsif (str_len > 171) and (str_len <= 308) %>
+<% elsif (str_len > 171) and (str_len <= 380) %>
   <% size =  "vertical" %>
 <% else  %>
   <%  size =  "big"%>
@@ -33,12 +33,12 @@
       <% if (isTrack)  %>
         <%  track = MusicAPI.new.findTrack(review.api_id)  %>
         <%  track_type = "Song"  %>
-        <%  img_url = track.album.images[0]['url'] %>
+        <%  img_url = track.album.images[0]&.url  %>
         <%  link = "/song_reviews/#{track.id}" %>
       <% else %>
         <%  album = MusicAPI.new.findAlbum(review.api_id)  %>
         <%  track_type = "Album"  %>
-        <%  img_url = album.images[0]['url'] %>
+        <%  img_url = album.images[0]&.url  %>
         <%  link = "/album_reviews/#{album.id}" %>
       <% end %>
       <% username = User.find(review.user_id)%>
@@ -46,9 +46,13 @@
         <div class="feed--review-con">
           <div class="feed--img-con">
             <% unless username.photo.key == nil %>
-              <%= cl_image_tag username.photo.key, class: 'feed--img review-user-image border border-dark me-2'%>
+              <a href="/users/<%= review.user_id %>" class="modal-links">
+                <%= cl_image_tag username.photo.key, class: 'feed--img review-user-image border border-dark me-2'%>
+              </a>
             <% else  %>
-              <img class = "feed--img review-user-image border border-dark ms-3 me-2"/>
+              <a href="/users/<%= review.user_id %>" class="modal-links">
+                <img  src ='https://res.cloudinary.com/dh8a307rs/image/upload/v1657976924/fireworks_1_tscv62.png' class = "feed--img review-user-image border border-dark ms-3 me-2"/>
+              </a>
             <% end %>
             <div class="feed--rating-box">
               <%= render "partials/rating-box", data:(rating)&.round(1) %>

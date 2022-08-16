@@ -1,7 +1,11 @@
 class PagesController < ApplicationController
 
   def home
-    @artists = MusicAPI.new.displayArtist('ariana')
+    @artists1 = MusicAPI.new.displayArtist('bee gee')
+    @artists2 = MusicAPI.new.displayArtist('arianna')
+    @artists3 = MusicAPI.new.displayArtist('vance')
+    @artists4 = MusicAPI.new.displayArtist('kate bush')
+    @artists5 = MusicAPI.new.displayArtist('Beyoncé')
     @albums = MusicAPI.new.displayAlbums('lil')
     @tracks = MusicAPI.new.displayTracks('bush')
   end
@@ -31,5 +35,8 @@ class PagesController < ApplicationController
     @results_more_artists = MusicAPI.new.display_more_artists(params[:searchText]['query']);
     @results_more_albums = MusicAPI.new.display_more_albums(params[:searchText]['query']);
     @results_more_tracks = MusicAPI.new.display_more_tracks(params[:searchText]['query']);
+  end
+
+  def contact
   end
 end
