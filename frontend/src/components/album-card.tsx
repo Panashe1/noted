@@ -8,7 +8,7 @@ export function AlbumCard({ album }: { album: Album }) {
   return (
     <Link
       href={`/albums/${album.id}`}
-      className="group block overflow-hidden rounded-lg border border-border bg-surface transition hover:border-muted"
+      className="group block overflow-hidden rounded-lg border border-border bg-surface transition hover:border-accent"
     >
       <div className="relative aspect-square bg-surface-hover">
         {album.artwork_url ? (

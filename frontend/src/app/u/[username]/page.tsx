@@ -31,7 +31,7 @@ export default async function ProfilePage({ params }: Props) {
   return (
     <div className="space-y-6">
       <header className="flex items-center gap-4">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-surface text-2xl">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent-muted text-2xl">
           {user.username[0].toUpperCase()}
         </div>
         <div>

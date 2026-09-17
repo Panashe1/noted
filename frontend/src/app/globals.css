@@ -1,14 +1,40 @@
 @import "tailwindcss";
 
+/*
+  Brand palette: https://coolors.co/0a0908-22333b-f2f4f3-a9927d-5e503f
+
+  The five palette colours are named below, then mapped to the semantic tokens
+  the components actually use. Three tokens are derived rather than taken
+  straight from the palette, because five colours cannot cover every surface
+  and still stay readable:
+
+    --surface-hover  gunmetal lifted ~8% toward smoke, for hover elevation
+    --border         gunmetal lifted ~15% toward smoke, so edges read against
+                     both the near-black page and the gunmetal cards
+    --muted          khaki lightened until it clears WCAG AA (4.5:1) as small
+                     text on night, gunmetal AND surface-hover. Raw khaki only
+                     reaches 4.42:1 on cards, which is why it is not used here.
+
+  Umber is structural only. At 2.55:1 on night it is not legible as text, so it
+  backs shapes (avatars, fills) and never carries copy.
+*/
 :root {
-  --background: #14181c;
-  --surface: #1c2228;
-  --surface-hover: #242c34;
-  --border: #2c3440;
-  --foreground: #e6e9ec;
-  --muted: #9ab;
-  --accent: #e2b714;
-  --accent-foreground: #14181c;
+  --night: #0a0908;
+  --gunmetal: #22333b;
+  --smoke: #f2f4f3;
+  --khaki: #a9927d;
+  --umber: #5e503f;
+
+  --background: var(--night);
+  --surface: var(--gunmetal);
+  --surface-hover: #2b3d45;
+  --border: #33454d;
+  --foreground: var(--smoke);
+  --muted: #b3a795;
+  --accent: var(--khaki);
+  --accent-foreground: var(--night);
+  --accent-muted: var(--umber);
+  /* Deliberately outside the palette: an error has to read as an error. */
   --danger: #ff6b6b;
 }
 
@@ -21,6 +47,7 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-muted: var(--accent-muted);
   --color-danger: var(--danger);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -34,4 +61,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
 }
