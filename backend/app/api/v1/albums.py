@@ -3,8 +3,11 @@ from typing import Annotated
 
 from fastapi import APIRouter, HTTPException, Query, status
 
-from app.schemas.music import AlbumOut, AlbumSearchResponse
+from app.core.deps import DbSession
+from app.models.music import Album
+from app.schemas.music import AlbumDetail, AlbumOut, AlbumSearchResponse
 from app.services.music import Catalog
+from app.services.reviews import album_stats
 
 router = APIRouter(prefix="/albums", tags=["albums"])
 
@@ -24,17 +27,26 @@ async def search_albums(
     )
 
 
+async def _with_stats(db: DbSession, album: Album) -> AlbumDetail:
+    stats = await album_stats(db, album.id)
+    return AlbumDetail(
+        **AlbumOut.model_validate(album).model_dump(),
+        average_rating=stats.average_rating,
+        review_count=stats.review_count,
+    )
+
+
 @router.get("/apple/{apple_id}")
-async def read_album_by_apple_id(apple_id: int, catalog: Catalog) -> AlbumOut:
+async def read_album_by_apple_id(apple_id: int, catalog: Catalog, db: DbSession) -> AlbumDetail:
     album = await catalog.get_by_apple_id(apple_id)
     if album is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Album not found")
-    return AlbumOut.model_validate(album)
+    return await _with_stats(db, album)
 
 
 @router.get("/{album_id}")
-async def read_album(album_id: uuid.UUID, catalog: Catalog) -> AlbumOut:
+async def read_album(album_id: uuid.UUID, catalog: Catalog, db: DbSession) -> AlbumDetail:
     album = await catalog.get_by_id(album_id)
     if album is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Album not found")
-    return AlbumOut.model_validate(album)
+    return await _with_stats(db, album)

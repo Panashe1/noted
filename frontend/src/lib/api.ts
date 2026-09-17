@@ -1,6 +1,12 @@
 import type { components } from "@/types/api";
 
 export type Album = components["schemas"]["AlbumOut"];
+export type AlbumDetail = components["schemas"]["AlbumDetail"];
+export type Review = components["schemas"]["ReviewOut"];
+export type ReviewWithAlbum = components["schemas"]["ReviewWithAlbum"];
+export type ReviewPage = components["schemas"]["ReviewPage"];
+export type ReviewWithAlbumPage = components["schemas"]["ReviewWithAlbumPage"];
+export type ReviewWrite = components["schemas"]["ReviewWrite"];
 export type AlbumSearch = components["schemas"]["AlbumSearchResponse"];
 export type User = components["schemas"]["UserPrivate"];
 export type PublicUser = components["schemas"]["UserPublic"];
@@ -57,7 +63,27 @@ export const api = {
 
   searchAlbums: (q: string, limit = 20) =>
     request<AlbumSearch>(`/albums/search?${new URLSearchParams({ q, limit: String(limit) })}`),
-  album: (id: string, init?: RequestInit) => request<Album>(`/albums/${id}`, init),
+  album: (id: string, init?: RequestInit) => request<AlbumDetail>(`/albums/${id}`, init),
+
+  albumReviews: (albumId: string, limit = 20, offset = 0) =>
+    request<ReviewPage>(
+      `/albums/${albumId}/reviews?${new URLSearchParams({
+        limit: String(limit),
+        offset: String(offset),
+      })}`,
+    ),
+  myReview: (albumId: string) => request<Review>(`/albums/${albumId}/review`),
+  saveReview: (albumId: string, body: ReviewWrite) =>
+    request<Review>(`/albums/${albumId}/review`, { method: "PUT", body: JSON.stringify(body) }),
+  deleteReview: (albumId: string) =>
+    request<void>(`/albums/${albumId}/review`, { method: "DELETE" }),
+  userReviews: (username: string, limit = 20, offset = 0) =>
+    request<ReviewWithAlbumPage>(
+      `/users/${encodeURIComponent(username)}/reviews?${new URLSearchParams({
+        limit: String(limit),
+        offset: String(offset),
+      })}`,
+    ),
 
   me: () => request<User>("/users/me"),
   user: (username: string, init?: RequestInit) =>

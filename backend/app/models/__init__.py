@@ -1,5 +1,6 @@
 from app.models.base import Base
 from app.models.music import Album, Artist
+from app.models.review import Review
 from app.models.user import User
 
-__all__ = ["Album", "Artist", "Base", "User"]
+__all__ = ["Album", "Artist", "Base", "Review", "User"]

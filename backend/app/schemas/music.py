@@ -27,6 +27,16 @@ class AlbumOut(BaseModel):
     track_count: int | None
 
 
+class AlbumDetail(AlbumOut):
+    """An album plus the rating aggregate shown on its page.
+
+    Kept separate from AlbumOut so search results never pay for the aggregate query.
+    """
+
+    average_rating: float | None
+    review_count: int
+
+
 SearchSource = Literal["local", "itunes", "mixed"]
 
 

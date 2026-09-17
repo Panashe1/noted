@@ -174,10 +174,117 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/albums/{album_id}/reviews": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Album Reviews */
+        get: operations["list_album_reviews_api_v1_albums__album_id__reviews_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/albums/{album_id}/review": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Read Own Review */
+        get: operations["read_own_review_api_v1_albums__album_id__review_get"];
+        /**
+         * Upsert Own Review
+         * @description Create or replace the caller's review of this album.
+         *
+         *     One review per user per album, so this is an upsert rather than a plain POST.
+         */
+        put: operations["upsert_own_review_api_v1_albums__album_id__review_put"];
+        post?: never;
+        /** Delete Own Review */
+        delete: operations["delete_own_review_api_v1_albums__album_id__review_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/reviews/{review_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Read Review */
+        get: operations["read_review_api_v1_reviews__review_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/users/{username}/reviews": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List User Reviews */
+        get: operations["list_user_reviews_api_v1_users__username__reviews_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /**
+         * AlbumDetail
+         * @description An album plus the rating aggregate shown on its page.
+         *
+         *     Kept separate from AlbumOut so search results never pay for the aggregate query.
+         */
+        AlbumDetail: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Title */
+            title: string;
+            artist: components["schemas"]["ArtistOut"];
+            /** Apple Id */
+            apple_id: number | null;
+            /** Upc */
+            upc: string | null;
+            /** Release Date */
+            release_date: string | null;
+            /** Artwork Url */
+            artwork_url: string | null;
+            /** Genre */
+            genre: string | null;
+            /** Track Count */
+            track_count: number | null;
+            /** Average Rating */
+            average_rating: number | null;
+            /** Review Count */
+            review_count: number;
+        };
         /** AlbumOut */
         AlbumOut: {
             /**
@@ -266,6 +373,100 @@ export interface components {
             username: string;
             /** Password */
             password: string;
+        };
+        /** ReviewOut */
+        ReviewOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            user: components["schemas"]["UserPublic"];
+            /** Rating */
+            rating: number;
+            /** Body */
+            body: string | null;
+            /** Listened At */
+            listened_at: string | null;
+            /** Contains Spoilers */
+            contains_spoilers: boolean;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Updated At
+             * Format: date-time
+             */
+            updated_at: string;
+        };
+        /** ReviewPage */
+        ReviewPage: {
+            /** Items */
+            items: components["schemas"]["ReviewOut"][];
+            /** Total */
+            total: number;
+            /** Limit */
+            limit: number;
+            /** Offset */
+            offset: number;
+        };
+        /** ReviewWithAlbum */
+        ReviewWithAlbum: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            user: components["schemas"]["UserPublic"];
+            /** Rating */
+            rating: number;
+            /** Body */
+            body: string | null;
+            /** Listened At */
+            listened_at: string | null;
+            /** Contains Spoilers */
+            contains_spoilers: boolean;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Updated At
+             * Format: date-time
+             */
+            updated_at: string;
+            album: components["schemas"]["AlbumOut"];
+        };
+        /** ReviewWithAlbumPage */
+        ReviewWithAlbumPage: {
+            /** Items */
+            items: components["schemas"]["ReviewWithAlbum"][];
+            /** Total */
+            total: number;
+            /** Limit */
+            limit: number;
+            /** Offset */
+            offset: number;
+        };
+        /**
+         * ReviewWrite
+         * @description Payload for creating or replacing your review of an album.
+         */
+        ReviewWrite: {
+            /** Rating */
+            rating: number;
+            /** Body */
+            body?: string | null;
+            /** Listened At */
+            listened_at?: string | null;
+            /**
+             * Contains Spoilers
+             * @default false
+             */
+            contains_spoilers: boolean;
         };
         /** UserPrivate */
         UserPrivate: {
@@ -560,7 +761,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["AlbumOut"];
+                    "application/json": components["schemas"]["AlbumDetail"];
                 };
             };
             /** @description Validation Error */
@@ -591,7 +792,201 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["AlbumOut"];
+                    "application/json": components["schemas"]["AlbumDetail"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_album_reviews_api_v1_albums__album_id__reviews_get: {
+        parameters: {
+            query?: {
+                limit?: number;
+                offset?: number;
+            };
+            header?: never;
+            path: {
+                album_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReviewPage"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    read_own_review_api_v1_albums__album_id__review_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                album_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReviewOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    upsert_own_review_api_v1_albums__album_id__review_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                album_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReviewWrite"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReviewOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_own_review_api_v1_albums__album_id__review_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                album_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    read_review_api_v1_reviews__review_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                review_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReviewWithAlbum"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_user_reviews_api_v1_users__username__reviews_get: {
+        parameters: {
+            query?: {
+                limit?: number;
+                offset?: number;
+            };
+            header?: never;
+            path: {
+                username: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReviewWithAlbumPage"];
                 };
             };
             /** @description Validation Error */

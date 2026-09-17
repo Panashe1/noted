@@ -2,13 +2,17 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { api, ApiError, type Album } from "@/lib/api";
+import { ReviewForm } from "@/components/review-form";
+import { ReviewList } from "@/components/review-list";
+import { RatingBadge } from "@/components/stars";
+import { api, ApiError, type AlbumDetail } from "@/lib/api";
 
 type Props = { params: Promise<{ id: string }> };
 
-async function getAlbum(id: string): Promise<Album> {
+async function getAlbum(id: string): Promise<AlbumDetail> {
   try {
-    return await api.album(id, { next: { revalidate: 3600 } });
+    // Not cached: the rating aggregate has to reflect reviews posted a moment ago.
+    return await api.album(id, { cache: "no-store" });
   } catch (err) {
     if (err instanceof ApiError && (err.status === 404 || err.status === 422)) notFound();
     throw err;
@@ -33,7 +37,7 @@ export default async function AlbumPage({ params }: Props) {
 
   return (
     <article className="grid gap-8 md:grid-cols-[280px_1fr]">
-      <div className="relative aspect-square overflow-hidden rounded-lg border border-border bg-surface">
+      <div className="relative aspect-square overflow-hidden rounded-lg border border-border bg-surface md:sticky md:top-8 md:self-start">
         {album.artwork_url ? (
           <Image
             src={album.artwork_url}
@@ -48,10 +52,13 @@ export default async function AlbumPage({ params }: Props) {
         )}
       </div>
 
-      <div className="space-y-6">
-        <header>
-          <h1 className="text-3xl font-semibold tracking-tight">{album.title}</h1>
-          <p className="text-lg text-muted">{album.artist.name}</p>
+      <div className="space-y-8">
+        <header className="space-y-3">
+          <div>
+            <h1 className="text-3xl font-semibold tracking-tight">{album.title}</h1>
+            <p className="text-lg text-muted">{album.artist.name}</p>
+          </div>
+          <RatingBadge value={album.average_rating} count={album.review_count} />
         </header>
 
         {facts.length > 0 && (
@@ -65,9 +72,14 @@ export default async function AlbumPage({ params }: Props) {
           </dl>
         )}
 
-        <div className="rounded-lg border border-dashed border-border p-6 text-sm text-muted">
-          Ratings and reviews land in the next milestone.
-        </div>
+        <ReviewForm albumId={album.id} />
+
+        <section>
+          <h2 className="border-b border-border pb-2 text-sm font-medium tracking-wide text-muted uppercase">
+            Reviews
+          </h2>
+          <ReviewList albumId={album.id} />
+        </section>
       </div>
     </article>
   );

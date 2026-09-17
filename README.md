@@ -22,16 +22,18 @@ noted/
 │   ├── app/
 │   │   ├── main.py            FastAPI app, CORS, lifespan
 │   │   ├── core/              config, db session, cache, security (JWT/argon2), deps
-│   │   ├── models/            SQLAlchemy models: User, Artist, Album
+│   │   ├── models/            SQLAlchemy models: User, Artist, Album, Review
 │   │   ├── schemas/           Pydantic request/response models
-│   │   ├── api/v1/            routers: health, auth, users, albums
-│   │   └── services/music/    MusicProvider protocol, iTunes adapter, local-first catalog
+│   │   ├── api/v1/            routers: health, auth, users, albums, reviews
+│   │   └── services/          music/ (provider protocol, iTunes adapter, catalog)
+│   │                          reviews.py (rating aggregates, paging)
 │   ├── alembic/               async migrations
 │   └── tests/                 pytest, in-memory SQLite, fake provider (no network)
 ├── frontend/
 │   └── src/
 │       ├── app/               routes: /, /albums/[id], /u/[username], /login, /register
-│       ├── components/        nav, album search, album card, auth form
+│       ├── components/        nav, album search, album card, auth form,
+│       │                      stars, star input, review form, review list
 │       ├── lib/               typed API client (with silent token refresh), hooks
 │       └── types/api.d.ts     generated from the backend's OpenAPI spec
 ├── docker-compose.yml         Postgres + Redis for local dev
@@ -82,6 +84,31 @@ Local-first search plus response caching keeps us well under that as the catalog
 `Album.apple_id` is the Apple Music album id, so moving to the Apple Music API later is a
 new adapter in `app/services/music/`, not a data migration.
 
+## How reviews work
+
+A user has **at most one review per album**, enforced by a unique constraint on
+`(user_id, album_id)`. That makes the write endpoint an upsert rather than a plain POST:
+
+```
+GET    /api/v1/albums/{album_id}/reviews   every review for an album (paged)
+GET    /api/v1/albums/{album_id}/review    your own review, 404 if you have none
+PUT    /api/v1/albums/{album_id}/review    create (201) or replace (200) your review
+DELETE /api/v1/albums/{album_id}/review    remove your review
+GET    /api/v1/reviews/{review_id}         permalink, includes the album
+GET    /api/v1/users/{username}/reviews    someone's reviews, newest first
+```
+
+Ratings run 0.5 to 5.0 in half-star steps. The database stores **half-stars as an integer
+1-10** (`rating_half_stars`) rather than a decimal, which keeps the value exact on both
+Postgres and the SQLite the tests use, and makes `AVG()` trivial. The API converts at the
+edge, so clients only ever see 0.5-5.0.
+
+`GET /api/v1/albums/{id}` returns `average_rating` and `review_count` alongside the album.
+Search results deliberately do not, so the hot path never pays for the aggregate query.
+
+Logging the same album more than once, the way Letterboxd handles relistens, would mean
+dropping the unique constraint and adding a separate diary entry. That is left for later.
+
 ## Auth model
 
 - Register/login set two httpOnly cookies: `noted_access` (path `/`) and `noted_refresh`
@@ -93,7 +120,7 @@ new adapter in `app/services/music/`, not a data migration.
 
 ## Next milestones
 
-1. Reviews: `reviews` table (half-star rating, text, listened_at, spoilers), CRUD, album page.
+1. ~~Reviews: `reviews` table, CRUD, album page.~~ Done.
 2. Social: `follows`, `likes`, activity feed.
 3. Lists: `lists` + `list_items`.
-4. Diary view and profile stats.
+4. Diary view (multiple logs per album) and profile stats.
